@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HELLO</title>
+</head>
+<body>
+<h1>HELlo HTML</h1>
+<a href="http://localhost:8000/exweb/param.do?x=너부리&y=포로리">Param 실행 링크(전주소)</a>
+<a href="param.do?x=너부리&y=포로리">Param 실행 링크(파일명만)</a>
+<a href="/exweb/param.do?x=너부리&y=포로리">Param 실행 링크(폴더까지)</a>
+
+<h2>get 방식 요청 전송</h2>
+<form action="param.do" method="get">
+<input type="text" name="x" value=""/>
+<input type="text" name="y" value=""/>
+<input type="submit"/>
+</form> 
+
+
+<h2>post 방식 요청 전송</h2>
+<form action="param.do" method="post">
+<input type="text" name="x" value=""/>
+<input type="text" name="y" value=""/>
+<input type="submit"/>
+</form>
+
+<h2>계산기</h2>
+<form action="/exweb/calc.do" method="post">
+<input type="number" name="x" value="2"/>
+<select name="op">
+<option value="plu">+</option>
+<option value="min">-</option>
+<option value="mul">x</option>
+<option value="div">/</option>
+</select>
+<input type="number" name="y" value="3"/>
+<input type="submit"/>
+</form>
+
+</body>
+</html>
