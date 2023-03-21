@@ -22,11 +22,22 @@ public class CalServlet extends HttpServlet{
 PrintWriter out = resp.getWriter();
 
 
-String aa = req.getParameter("x"); 
-String bb = req.getParameter("y");
-double aaa = Double.parseDouble(aa);  //실수문자열 실수 변환
-double bbb = Double.parseDouble(bb);
-Double result = aaa+bbb;
+/*
+ * String aa = req.getParameter("x"); 
+ * String bb = req.getParameter("y");
+ */
+double a = Double.parseDouble(req.getParameter("x"));  //실수문자열 실수 변환
+double b = Double.parseDouble(req.getParameter("y"));
+char op = req.getParameter("op").charAt(0);
+double result = 0;
+switch(op) {
+case '+' : result = a+b; break;
+case '-' : result = a-b; break;
+case 'x' : result = a*b; break;
+case '/' : result = a/b; break;
+}
+
+
 //op 파라미터값 맞는 사칙연산 수행
 //문자열 값을 동등비교하는 경우, ==연산자가 아닌 .equals() 메서드 사용 
 // "문자열1" =="문자열2" (x)
@@ -41,7 +52,7 @@ out.println("<meta charset='UTF-8'>" );
 out.println("<title>HELLO</title>");
 out.println("</head>             ");
 out.println("<body>              ");
-out.println("<h2>"+ aa + "+" + bb + "=" + result + "</h2>");
+out.println("<h2>"+ a + op + b + "=" + result + "</h2>");
 out.println("</body>             ");
 out.println("</html>             ");
 
