@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FoRm</title>
+</head>
+<body>
+<h1>폼 입력 테스트</h1>
+<form action="/exweb/form.do" method="post">
+주문할 상품 :
+<select name="prod">
+<option value="shoes">신발</option>
+<option value="watch">시계</option>
+<option value="furniture">가구</option>
+</select>
+<br/>
+좋아하는 과일 :
+<input type="radio" name="fruit" value="berry"/> 딸기
+<input type="radio" name="fruit" value="peach"/> 복숭아
+<input type="radio" name="fruit" value="orange"/> 귤
+<br/>
+음료 :
+<input type="checkbox" name="drink" value="coffee" /> 커피
+<input type="checkbox" name="drink" value="greentea"/> 녹차
+<input type="checkbox" name="drink" value="blacktea"/> 홍차
+<br/>
+<input type ="submit"/>
+</form>
+
+
+<!-- 딸기를 선택하면 fruit=berry,
+복숭아를 선택하면 fruit=peach,
+귤을 선택하면 fruit=orange 라고 파라미터를 전송하도록 구현
+커피를 선택하면 drink=coffee,
+녹차를 선택하면 drink=greentea,
+홍차을 선택하면 drink=blacktea 라고 파라미터를 전송하도록 구현 -->
+
+</body>
+</html>
