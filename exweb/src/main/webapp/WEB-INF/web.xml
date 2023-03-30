@@ -41,6 +41,13 @@
   <servlet-name>cal</servlet-name>
   <url-pattern>/cal.do</url-pattern>
   </servlet-mapping>   -->
-  
+ <!--      <servlet>
+  <servlet-name>conv</servlet-name>
+  <servlet-class>com.exweb.ex.ConvServlet</servlet-class>  
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>conv</servlet-name>
+  <url-pattern>/exweb/dollar.do</url-pattern>
+  </servlet-mapping> -->
 </web-app>
 
