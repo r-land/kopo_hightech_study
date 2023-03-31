@@ -27,13 +27,16 @@
 <input type ="submit"/>
 </form>
 
+<h2>회원추가</h2>
+<form action="/exweb/member/add.do" method="post">
+아이디:<input type="text" name="memId" value=" "/><br>
+비밀번호:<input type="password" name="memPass" value=" "/><br>
+이름:<input type="text" name="memName" value=" "/><br>
+포인트:<input type="number" name="memPoint" value="0"/><br>
+<input type="submit"/>
+<input type="hidden" name="command" value="addMember"/>
+</form>
 
-<!-- 딸기를 선택하면 fruit=berry,
-복숭아를 선택하면 fruit=peach,
-귤을 선택하면 fruit=orange 라고 파라미터를 전송하도록 구현
-커피를 선택하면 drink=coffee,
-녹차를 선택하면 drink=greentea,
-홍차을 선택하면 drink=blacktea 라고 파라미터를 전송하도록 구현 -->
 
 </body>
 </html>
