@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+        }
+        .grad {
+          background: #06f; /* css3 미지원 브라우저 */
+          background-image: -webkit-linear-gradient(top, #06f, white 30%, #06f); /* 초기 모던 브라우저 */
+          background-image: -moz-linear-gradient(bottom, #06f, white 30%, #06f); /* 초기 모던 브라우저 */
+          background: -o-linear-gradient(bottom, #06f, white 30%, #06f); /* 초기 모던 브라우저 */
+          background: linear-gradient(to bottom, #06f, white 30%, #06f); /* 최신 모던 브라우저 */
+        }
+       .grad1{
+        background:red;
+        background:-webkit-radial-gradient(white, yellow, pink, red);
+        background:-moz-radial-gradient(white, yellow, pink, red);
+        background:-o-radial-gradient(white, yellow, pink,red);
+        background:radial-gradient(white, yellow, pink, red);
+                }
+        .grad2{
+          background:#06f;
+          background:-webkit-radial-gradient(10% 10%, circle, white, rgb(231, 151, 169), #06f);
+          background:-moz-radial-gradient(10% 10%, circle, white, rgb(231, 151, 169), #06f);
+          background:-o-radial-gradient(10% 10%, circle, white, rgb(231, 151, 169), #06f);
+          background:radial-gradient(10% 10%, circle, white, rgb(231, 151, 169), #06f);
+            }
+         
+            
+    </style>
+        
+</head>
+<body>
+    <div class="grad"></div>
+    <div class="grad1"></div>
+    <div class="grad2"></div>
+</body>
+</html>

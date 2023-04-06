@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:500px;
+            height: 300px;
+            margin: 10px;
+        }
+        .grad2 {
+          background: red; /* css3 미지원 브라우저 */
+          background: -webkit-repeating-linear-gradient(yellow, yellow 20px, red 20px, red 40px); /* 초기 모던 브라우저 */
+          background: -moz-repeating-linear-gradient(yellow, yellow 20px, red 20px, red 40px); /* 초기 모던 브라우저 */
+          background: -o-repeating-linear-gradient(yellow, yellow 20px, red 20px, red 40px); /* 초기 모던 브라우저 */
+          background: repeating-linear-gradient(yellow, yellow 20px, red 20px, red 40px); /* 최신 모던 브라우저 */
+        }
+        .grad3 {
+          background: red; /* css3 미지원 브라우저 */
+          background: -webkit-repeating-linear-gradient(yellow,  red 20px); /* 초기 모던 브라우저 */
+          background: -moz-repeating-linear-gradient(yellow,  red 20px); /* 초기 모던 브라우저 */
+          background: -o-repeating-linear-gradient(yellow,  red 20px ); /* 초기 모던 브라우저 */
+          background: repeating-linear-gradient(yellow, red 20px); /* 최신 모던 브라우저 */
+        }
+        </style>
+        
+</head>
+<body>
+    <div class="grad2"></div>
+    <div class="grad3"></div>
+</body>
+</html>
