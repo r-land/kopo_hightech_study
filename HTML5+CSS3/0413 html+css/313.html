@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테두리 그림자</title>
+    <style>
+        div{
+            width: 200px;
+            height: 100px;
+            display: inline-block;
+            margin: 15px;
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 5px;
+            color:rgb(73, 46, 12);
+            text-align : center;
+        }
+        .box1{ box-shadow:2px -12px 15px 0px black;  }
+        .box2{ box-shadow:5px 5px 15px 5px gray;}
+      </style>
+      
+
+</head>
+
+<body>
+    <div class="box1">box-shadow <br> 양수 아래쪽<br> 음수 위쪽</div>
+    <div class="box2">box-shadow 가로 세로<br> 흐림정도 번짐정도 <br>색상</div>
+</body>
+</html>

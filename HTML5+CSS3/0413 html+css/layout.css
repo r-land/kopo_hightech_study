@@ -1,0 +1,81 @@
+body {font-family: "맑은 고딕","고딕","굴림";}
+header {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    background: skyblue;
+    padding: 10px;
+    overflow: hidden;
+}
+header h1{
+    width: 40%;
+    float: left;
+    color: aliceblue;
+}
+header nav {
+    width: 60%;
+    float: right;
+    height: 60px;
+    background-color: rgb(67, 181, 238);
+}
+nav ul{ 
+    list-style: none;
+}
+nav ul li{
+    display: inline;
+    float: left;
+    padding: 10px 15px;
+    margin: 15px;
+}
+nav ul li:hover{
+    background: rgb(196, 196, 196)
+}
+nav ul li a{
+      color: rgb(248, 243, 243);
+      text-decoration: none;  
+}
+p{
+    font-size: 15px;
+    line-height: 20px;
+}
+dt {
+
+    background: url(images/강아.png) no-repeat;
+
+    background-size: 30px;
+    font-weight: bold;
+    color: palevioletred;
+    text-indent: 40px;  
+}
+dd{
+    line-height: 30px;
+}
+h1{
+    font-size: 2em;
+}
+section{
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+    border: 5px solid #333;
+    padding: 5px;
+    overflow: hidden;
+}
+article h3{
+    background: url(images/bg.png) no-repeat;
+    text-indent: 30px;  
+}
+aside{
+    clear: both;
+    height: auto;
+    padding: 10px;
+}
+footer{
+    clear: both;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    padding: 10px;
+    background-color: #333;
+}
