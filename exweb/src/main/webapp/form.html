@@ -29,9 +29,9 @@
 
 <h2>회원추가</h2>
 <form action="/exweb/member/add.do" method="post">
-아이디:<input type="text" name="memId" value=" "/><br>
+아이디:<input type="text" name="memId" value=""/><br>
 비밀번호:<input type="password" name="memPass" value=" "/><br>
-이름:<input type="text" name="memName" value=" "/><br>
+이름:<input type="text" name="memName" value=""/><br>
 포인트:<input type="number" name="memPoint" value="0"/><br>
 <input type="submit"/>
 <input type="hidden" name="command" value="addMember"/>
@@ -40,9 +40,9 @@
 
 <h2>회원추가</h2>
 <form action="/exweb/member/addform.do" method="post">
-아이디:<input type="text" name="memId" value=" "/><br>
+아이디:<input type="text" name="memId" value=""/><br>
 비밀번호:<input type="password" name="memPass" value=" "/><br>
-이름:<input type="text" name="memName" value=" "/><br>
+이름:<input type="text" name="memName" value=""/><br>
 포인트:<input type="number" name="memPoint" value="0"/><br>
 <input type="submit"/>
 <input type="hidden" name="command" value="addMember"/>
@@ -67,6 +67,12 @@
 <input type="hidden" name="command" value="addMember"/>
 </form>
 
+<h2>세션,서블릿컨텍스트,쿠기저장</h2>
+<form action="/exweb/save" method="get">
+닉네임:<input type="text" name="nn" value=""/><br>
+<input type="checkbox" name="rem" value="on"/>기억하기<br>
+<input type="submit"/>
+</form>
 
 </body>
 </html>

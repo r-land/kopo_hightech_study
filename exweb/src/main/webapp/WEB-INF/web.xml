@@ -9,4 +9,46 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  
+ <!--  <servlet>
+  <servlet-name>loader</servlet-name>
+  <servlet-class>com.exweb.comm.DriverServlet</servlet-class> 
+  서블릿에서 읽을 수 있는 데이터를 이름-값 형태로 설정 가능 
+  <init-param>
+  	<param-name>driver</param-name>
+  	<param-value>oracle.jdbc.OracleDriver</param-value>
+  </init-param>
+  자바파일 밑 클래스 우클릭 copy qualified name 클릭해서 붙여넣기
+ load-on-startup 값을 0이상의 정수로 지정을 하면 , 서버 (톰켓) 시작시 이 서블릿 객체를 미리 생성(숫자오름차순으로 생성)
+지정안하면 음수가 자동 서바가 필요하다고 판단할때 서블릿 객체생성(일반적으로 요청을 받으면 생성) 왜하냐면 먼저 공통사항을 실행해줘야 다음에들이 반영이 되는데 유저보고 그거먼저 접속하라고 할수없으니깐 
+<load-on-startup>0</load-on-startup>
+ </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>loader</servlet-name>
+   <url-pattern>/load</url-pattern>
+  </servlet-mapping> -->
+  
+<!--   웹 애플리케이션 전체에서 사용 가능한 데이터를 이름-값 형태로 설정 
+  서블릿컨텍스트 객체에 저장 모든 애들이 다 사용가능 더 사용하고싶으면 복붙 추가 -->
+  <context-param>
+  <param-name>driver</param-name>
+  <param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  
+  <listener>
+   <listener-class>com.exweb.comm.DriverListener</listener-class>
+  </listener>
+  
+  <filter>
+    <filter-name>encFilter</filter-name>
+    <filter-class>com.exweb.comm.CharEncFilter</filter-class>
+  </filter>
+  <filter-mapping>
+      <filter-name>encFilter</filter-name>
+      <url-pattern>/member/*</url-pattern>
+  </filter-mapping>
+  
+  
 </web-app>

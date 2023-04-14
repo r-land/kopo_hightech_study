@@ -29,15 +29,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/member/list.do")
 public class MemListServlet extends HttpServlet{
 	
-	{//애플리케이션에 JDBC 사용 전에 최초 1번은 JDBC 드라이버 클래스를 메모리에 로드 필요 //addservlet과 어느게 먼저 실행될지 몰라서 둔다
-				try {
-					Class.forName("oracle.jdbc.OracleDriver");
-				} catch (ClassNotFoundException e) {
-					// 예외처리
-					e.printStackTrace();
-				}
-	}	
-	//클래스 초기화 블럭 최초 1번만 실행  
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";  // DB 서버 주소
 	String user = "web";  // DB 접속 아이디
 	String password = "web01"; //db 접속 비밀번호
