@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.exweb.member.MemberDao">
   <select id="selectMemberList" resultType="com.exweb.member.MemberVo">
-    SELECT mem_id, mem_pass, mem_name, mem_point FROM member
+    SELECT mem_id as memId, mem_pass as memPass, mem_name memName, mem_point memPoint FROM member
   </select>
 
 <!-- 실행시키고싶은 sql문 여기에 놓기 -->
