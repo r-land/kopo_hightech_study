@@ -6,8 +6,9 @@ import javax.servlet.ServletContextListener;
 
 //리스너 : 특정 사건이 발생했을떄 자동으로 실행되는 객체
 //감지하고 싶은 사건의 종류에 따라서 그에 맞는 리스너인터페이스 구현
+//-web.xml 파일에 <listener>사용하여 등록하거나 @weblistener 클래스 적용
 
-
+//@weblistener
 public class DriverListener implements ServletContextListener  {
 
 		@Override

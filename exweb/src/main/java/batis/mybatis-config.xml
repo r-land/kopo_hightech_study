@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- 실제로 사용할 데이터베이스 정보를 담은 environment의 id를 default속성값을 지정--> 
+<environments default="development">
+  <!-- 사용하는 데이터베이스 접속 정보를 environment태그로 설정 -->
+  <!-- 개발용 테스트용 실제운영용 실제 다수의 데이터베이스가 다를수 있어서 각자 설정  -->
+  <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+<!-- pooled 미리 여러개 연결시킬 준비 시켜놓고  DriverManager.getConnection 연결  -->
+        <property name="driver" value="oracle.jdbc.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="web"/>
+        <property name="password" value="web01"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+<!--   마이바티스를 통해서 실행 -->
+    <mapper resource="/batis/mappers/MemberMapper.xml"/>
+  </mappers>
+</configuration>

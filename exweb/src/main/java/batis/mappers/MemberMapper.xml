@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exweb.member.MemberDao">
+  <select id="selectMemberList" resultType="com.exweb.member.MemberVo">
+    SELECT mem_id, mem_pass, mem_name, mem_point FROM member
+  </select>
+
+<!-- 실행시키고싶은 sql문 여기에 놓기 -->
+<!-- 이파일이 담고 있는 sql문들 집합의 고유한 이름을 namespace 속성값으로 설정
+일반적으로 이 sql 문들 실행 할 때 사용 할 dao 인터페이스 이름을 지정  -->
+<!-- 	등록할 sql문과 동일한 이름의 태그를 사용하여 sql 등록
+	이 파일 내에서 해당 sql문 고유한 이름을 id 속성값으로 설정
+	일반적으로 이 sql문을 실핼 할 때 사용 할 dao인터페이스의 메서드 이름을 지정 
+	select 실행 결과의 한 행(row)를 담을 객체를 클래스명을 resulttype 속성에서 -->
+
+
+</mapper>
