@@ -41,13 +41,19 @@
    <listener-class>com.exweb.comm.DriverListener</listener-class>
   </listener>
   
+ <!--/*는 모든 서블릿 /mem/* 하위 서블릿을 실행할때는 -필터가 먼저 실행된다
+ 다른사람이 사용할때 이곳을 보고 각자 수정 가능 --> 
   <filter>
     <filter-name>encFilter</filter-name>
     <filter-class>com.exweb.comm.CharEncFilter</filter-class>
+    <init-param>
+    <param-name>encoding</param-name>
+    <param-value>UTF-8</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
       <filter-name>encFilter</filter-name>
-      <url-pattern>/member/*</url-pattern>
+      <url-pattern>/*</url-pattern> 
   </filter-mapping>
   
   
