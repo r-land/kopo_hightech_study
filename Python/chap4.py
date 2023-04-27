@@ -37,3 +37,34 @@ for i in range(1,10):
  for j in range(1,10): 
     print('%d * %d = %d' %(i,j,i*j),end='') 
  print(end='\n') 
+
+ #시퀀스 객체를 활용한 for문
+ foods=["김치찌개","탕수육","카레","자장면","순대국","온면","된장국"]
+ for item in foods:
+        print(item)
+
+#while문 
+i=0
+tot=0
+while i <10:
+    i=i+1
+    tot=tot+i
+print("tot=%d" %tot)
+
+# 반복 제어문
+answer = input("Answer the Question!")
+while answer !="exit":
+    print(answer)
+    answer = input("Please Answer the Question~")
+else:
+    print("No More Answer")
+
+#break문
+i=0
+while True:
+    i=i+1
+    print("i=%d"%i,end=' ')
+    if i == 10:
+        break
+
+
