@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+// jdbc 기능들 다 mybatis 옮겨감 삭제해도 무방 
 //data access object 여기서 자바 객체 받아서 디비테이블 행으로 넣어주는 상호교환 작업해줌 
 //이렇게 해놓으면 여기서 디비관련 문제 수정만 해주면 다 바뀜
 public class MemberDaoJdbc implements MemberDao {

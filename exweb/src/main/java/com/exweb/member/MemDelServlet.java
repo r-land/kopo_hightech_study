@@ -21,8 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/del.do")
 public class MemDelServlet extends HttpServlet{
-	private MemberDao memberDao = new MemberDaoJdbc();
+	private MemberDao memberDao = new MemberDaoBatis();
 	//memberdao로 간 메소드 새로운 객체로 만들어서 사용하기 
+	//jdbc > batis로 수정 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		

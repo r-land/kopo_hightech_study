@@ -4,6 +4,21 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+<settings>
+<!-- 조회결과를 자바객체에 담을때, 밑줄표기법의 컬럼명과 낙타표기법의 자바속성(변수)명(_이정도 차이라면) 자동으로 맵핑 기본값 true로 변경 -->
+  <setting name="mapUnderscoreToCamelCase" value="true"/>
+</settings>
+
+<typeAliases>
+<!-- 마이바티스 설정파일 오직 xml설정내에서 com.exweb.member.MemberVo -> MemberVo 사용가능 -->
+	<typeAlias alias="MemberVo" type="com.exweb.member.MemberVo"/>
+	<!-- 패키지 태그를 사용하면 지정한 패키지 하위의 모든 클래스들에 대한 별명을 자동 등록 -->
+	<!--별명은 패키지명을 제외한 심플클래스이름으로 설정 하지만 같은이름의 클래스가 있으면 주의 -->
+<!-- 	<package name="com.exam.member"/> -->
+</typeAliases>
+
+
+
 <!-- 실제로 사용할 데이터베이스 정보를 담은 environment의 id를 default속성값을 지정--> 
 <environments default="development">
   <!-- 사용하는 데이터베이스 접속 정보를 environment태그로 설정 -->
@@ -19,6 +34,8 @@
       </dataSource>
     </environment>
   </environments>
+  
+  
   <mappers>
 <!--   마이바티스를 통해서 실행 -->
     <mapper resource="/batis/mappers/MemberMapper.xml"/>

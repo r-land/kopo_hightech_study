@@ -37,24 +37,42 @@ public class MemberDaoBatis implements MemberDao {
 		try (SqlSession session = sqlSessionFactory.openSession()) {
 			//실행할 sql문과 동일한 이름의 메서드를 사용하여 sql문 실행
 			//select 결과가 1행인 경우 selectOne, 2행이상인 경우 slectList 메서드 사용
-			//첫번쨰 인자로 실행할 sql문의 고유한 이름 전달
-			//두번쨰 인자로 sql문 실행시 필요한 데이터를 담은 객체를 전달 //지금은 필요없으니 삭제 원래 ,101 이였음
+			//첫번째 인자로 실행할 sql문의 고유한 이름 전달
+			//두번째 인자로 sql문 실행시 필요한 데이터를 담은 객체를 전달 //지금은 필요없으니 삭제 원래 ,101 이였음
 			list = session.selectList("com.exweb.member.MemberDao.selectMemberList");
 			}
 		//마이바티스 사이트 SqlSessionFactory 에서 SqlSession 만들기 에서 복붙 임포트 하고  
-	return list;
+		return list;
 	}
 
 	@Override
 	public int insertMember(MemberVo vo) {
-		// TODO Auto-generated method stub
-		return 0; 	}
+		int num = 0;
+	
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			num = session.insert("com.exweb.member.MemberDao.insertMember", vo);
+			session.commit(); //Insert, update, delete 후에는 commit
+			}
+		//마이바티스 사이트 SqlSessionFactory 에서 SqlSession 만들기 에서 복붙 임포트 하고  
+		//멤버메퍼.xml 두번째 객체 넣을 값 vo로 표현
+		return num;
+ }
+	
 
 	@Override
 	public int deleteMember(String memId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		int num = 0;
+		
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			num = session.delete("com.exweb.member.MemberDao.deleteMember", memId);
+			session.commit(); //Insert, update, delete 후에는 commit
+			}
+		//마이바티스 사이트 SqlSessionFactory 에서 SqlSession 만들기 에서 복붙 임포트 하고  
+		//멤버메퍼.xml 두번째 객체 넣을 값 vo로 표현
+		return num;
+ }
+	
+	
 
 	
 	

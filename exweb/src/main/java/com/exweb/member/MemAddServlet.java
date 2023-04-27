@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/add.do")
 public class MemAddServlet extends HttpServlet {
-	private MemberDao memberDao = new MemberDaoJdbc();
+	private MemberDao memberDao = new MemberDaoBatis();
 //memberdao로 간 메소드 새로운 객체로 만들어서 사용하기 
 
 //	// 클래스 초기화 블럭 최초 1번만 실행 왜 중복으로 생성했냐면 어디 페이지 먼저 실행될지 모르니깐  //Dao에 만들어줬으니깐 삭제가능
