@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1> 가즈아~ </h1>
+<h3> 공통메뉴</h3>
 </body>
 </html>
