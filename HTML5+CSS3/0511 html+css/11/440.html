@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상요소</title>
+</head>
+<style>
+    form fieldset{
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 25px;
+    }
+
+    form fieldset legend{
+        font-size: 18px;
+        font-weight: bold
+    }
+
+    input:disabled {
+      background:#ddd;
+      border:1px #ccc solid;
+    }
+    input:checked + span {
+      color:blue;
+    }
+  </style>
+  
+<body>
+    <form>
+        <fieldset>
+            <legend>사용자정보</legend>
+            <label>이름<input type="text" disabled></label>
+        </fieldset>
+
+    <p>이 달에 신청할 과목을 선택하세요</p>
+    <fieldset>
+<legend>신청 과목</legend>
+<label>
+  <input type="radio" name="subject" value="speaking"><span>회화</span>
+</label>
+<label>
+  <input type="radio" name="subject" value="grammar"><span>문법</span>
+</label>
+<label>
+  <input type="radio" name="subject" value="writing"><span>작문</span>
+</label>
+</fieldset>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성 ^=값 선택자</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{     
+            display: inline;
+            float: left;
+            margin: 10px;
+        }
+        li a {
+            padding: 5px 20px;
+            text-decoration: none;
+            font-size: 14px;
+            color: blue;
+        }    
+        a[title ^="eng"] {
+          background: url(images/us.png) no-repeat left center;
+          padding: 5px 25px;
+        }
+        a[title ^="jap"] {
+          background: url(images/jp.png) no-repeat left center;
+          padding: 5px 25px;
+        }
+        a[title ^="chin"] {
+          background: url(images/ch.png) no-repeat left center;
+          padding: 5px 25px;
+        }
+      
+      </style>
+      
+</head>
+<body>
+    <ul>
+        <li>외국어 서비스 : </li>
+        <li><a href="#" title="eng">영어</a></li>
+        <li><a href="#" title="jap">일본어</a></li>
+        <li><a href="#" title="chinese">중국어</a></li>
+      
+      </ul>
+      
+</body>
+</html>
