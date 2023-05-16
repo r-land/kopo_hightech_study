@@ -17,9 +17,9 @@ public class p0810 {
 		try {
 			phone=new HashMap<String,String>();
 			f=new File("c:\\javaex\\phone.txt");
-			InputStreamReader is = new InputStreamReader(new FileInputStream(f), "UTF-8");
+			InputStreamReader is = new InputStreamReader(new FileInputStream(f), "UTF-8"); //1바이트 파일 불러와서 2바이트로
 			
-			BufferedReader reader = new BufferedReader(is);
+			BufferedReader reader = new BufferedReader(is); //라인단위로 처리해줌
 	
 			sc=new Scanner(reader);
 			int i = 0;
@@ -31,7 +31,7 @@ public class p0810 {
 				System.out.println("이름 : "+n+" 전화번호 : "+phone.get(n));
 			}
 			System.out.println("총 "+phone.size()+"개의 정보를 읽었습니다.");
-			sc.close();
+			sc.close();  
 			sc=new Scanner(System.in);
 			String temp="";
 			while(true) {

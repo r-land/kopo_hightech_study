@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class BufferedReaderEx {
@@ -30,7 +31,16 @@ public class BufferedReaderEx {
 	
 	
 		}
-		
+		Scanner scan = new Scanner(System.in);
+		while(true) {
+			System.out.println("이름>>");
+			String name = scan.next();
+			if(name.equals("exit")) break;
+			System.out.println("전화번호 :" +map.get(name));
+		}
+		System.out.println("전화번호 검색을 종료합니다...");
+		reader.close();
+		scan.close();
 		}
 		
 		
