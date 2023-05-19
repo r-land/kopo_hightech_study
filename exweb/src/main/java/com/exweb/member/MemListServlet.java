@@ -39,7 +39,11 @@ public class MemListServlet extends HttpServlet{
 		List<MemberVo> list = memberDao.selectMemberList();
 		//memberDaojdbc로 간 selecMemberList()를 사용하려면 ? 객체 만들어서 실체를 만들어주면 클래스의 것을 가져다 쓸수 있음
 
-//		req.setCharacterEncoding("UTF-8"); 필터로 이동
+		req.setAttribute("memberList", list);
+		
+		req.getRequestDispatcher("/WEB-INF/views/member/memList.jsp").forward(req, resp);
+		
+/*		req.setCharacterEncoding("UTF-8"); 필터로 이동
 		resp.setContentType("text/html; charset=utf-8"); //서버에서 문서를 해석하는 타입과 인코딩 
 		PrintWriter out = resp.getWriter();	
 		
@@ -57,18 +61,18 @@ public class MemListServlet extends HttpServlet{
 			
 			for (MemberVo vo : list) {
 			
-//			System.out.println(memId + ":" + memPass + ":" + memName + ":" + memPoint); //콘솔출력
+			System.out.println(memId + ":" + memPass + ":" + memName + ":" + memPoint); //콘솔출력
 			
 			out.println("<p>"+ vo.getMemId() + ":" + vo.getMemPass() + ":" + vo.getMemName() + ":" + vo.getMemPoint() );
 			out.println("<a href='" +req.getContextPath()+ "/member/del.do?memId=" +vo.getMemId() + "'><button type='button'>삭제[x]</button></a>");	
 			out.println("</p>");
 			//웹브라우저출력
 			out.println("</body>             ");
-			out.println("</html>             ");	
+			out.println("</html>             ");	*/
 		}
 	}
 
 
 
 	
-}
+

@@ -13,17 +13,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//회원정보 추가 후 화면에 "회원목록으로 이동" 링크를 추가하고, 
-//그 링크를 클릭하면, 회원정보화면으로 이동하도록
-//MemAddServlet 클래식 변경
+//회원목록에서 아이디 클릭하면 
+//MemEditServlet memedit .jsp가 순차적으로 실행되어 회원정보변경 화면이 브라우저에 출력되도록 구현
 
-@WebServlet("/member/add.do")
-public class MemAddServlet extends HttpServlet {
+@WebServlet("/member/edit.do")
+public class MemEditServlet extends HttpServlet {
 	private MemberDao memberDao = new MemberDaoBatis();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/member/memAdd.jsp").forward(req,resp);
+		String memId = req.getParameter("memId");
+		MemberVo vo = memberDao.selectMember(memId);
+		req.setAttribute("mvo", vo);
+		
+		req.getRequestDispatcher("/WEB-INF/views/member/memEdit.jsp").forward(req,resp);
 	}
 	
 	@Override

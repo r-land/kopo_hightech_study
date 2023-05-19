@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 //memaddformservlet 변경
 
 
-@WebServlet("/member/addform.do")
+//@WebServlet("/member/addform.do")
 public class MemAddFormServlet extends HttpServlet{
 	
 

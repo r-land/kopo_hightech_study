@@ -18,6 +18,12 @@
 <!-- 	<select id="selectMemberList" resultMap="MemberMap"> -->
    	 SELECT mem_id, mem_pass, mem_name, mem_point FROM member
  	 </select>
+ 	 
+ 	 
+ 	 <select id="selectMember" resultType="MemberVo">
+   	 SELECT mem_id, mem_pass, mem_name, mem_point FROM member
+   	 WHERE mem_id = #{memId}
+ 	 </select>
 
 <!-- 실행시키고싶은 sql문 여기에 놓기 -->
 <!-- 이파일이 담고 있는 sql문들 집합의 고유한 이름을 namespace 속성값으로 설정

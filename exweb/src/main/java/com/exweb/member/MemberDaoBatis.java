@@ -71,6 +71,18 @@ public class MemberDaoBatis implements MemberDao {
 		//멤버메퍼.xml 두번째 객체 넣을 값 vo로 표현
 		return num;
  }
+
+	@Override
+	public MemberVo selectMember(String memId) {
+		MemberVo vo =null; 
+
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			vo = session.selectOne("com.exweb.member.MemberDao.selectMember",memId);
+			}
+
+		return vo;
+	
+	}
 	
 	
 
