@@ -104,7 +104,7 @@ from dual;
 
 --올림 주어진 숫자보다 크거나 같은 정수 중 최소값
 -- 16
-select CEIL(15.7)
+select CEIL(7.2)
 from dual;
 
 --코사인값
@@ -114,7 +114,7 @@ from dual;
 
 --버림  주어진 숫자보다 작거나 같은 정수 중 최대값
 -- 15
-select FLOOR(15.7)
+select FLOOR(8.9)
 from dual;
 
 --LOG
@@ -139,7 +139,7 @@ from dual;
 
 --주어진 값의 음수 정수 0 여부를 반환
 -- -1
-select SIGN(-15)
+select SIGN(-3.5)
 from dual;
 
 --버림
@@ -229,7 +229,7 @@ select LAST_DAY(SYSDATE)
 from dual;
 
 --주어진 일자가 다음에 나타나는 지정요일의 날짜를 반환??
-select NEXT_DAY(SYSDATE, ‘화’)
+select NEXT_DAY(SYSDATE, '화')
 from dual;
 
 --오전 12 넘으면 다음날
