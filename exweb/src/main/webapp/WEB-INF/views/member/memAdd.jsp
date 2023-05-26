@@ -8,7 +8,8 @@
 		<meta charset='UTF-8'>
 		<title>회원관리</title>
 		</head>             
-		<body>             
+		<body>        
+		<jsp:include page="/WEB-INF/views/menu.jsp"/>          
 		<h1> 회원 추가 </h1>
 		<form action='${pageContext.request.contextPath}/member/add.do' method='post'>         
 		아이디:<input type='text' name='memId' value=''/><br>        

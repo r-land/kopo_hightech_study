@@ -16,14 +16,20 @@
 <!-- 결과받아오기 리절트타입 -->
 <!-- resultMap속성을 사용하여, id가 memberMap인 resultMap에 써놓은대로 조회결과를 담도록 설정  -->
 <!-- 	<select id="selectMemberList" resultMap="MemberMap"> -->
-   	 SELECT mem_id, mem_pass, mem_name, mem_point FROM member
+   	 SELECT mem_id, mem_name, mem_point FROM member
  	 </select>
  	 
  	 
  	 <select id="selectMember" resultType="MemberVo">
-   	 SELECT mem_id, mem_pass, mem_name, mem_point FROM member
+   	 SELECT mem_id, mem_name, mem_point FROM member
    	 WHERE mem_id = #{memId}
  	 </select>
+ 	 
+ 	  <select id="selectLogin" resultType="MemberVo">
+   	 SELECT mem_id, mem_name, mem_point FROM member
+   	 WHERE mem_id = #{memId} and mem_pass = #{memPass}
+ 	 </select>
+ 	 
 
 <!-- 실행시키고싶은 sql문 여기에 놓기 -->
 <!-- 이파일이 담고 있는 sql문들 집합의 고유한 이름을 namespace 속성값으로 설정
@@ -42,6 +48,12 @@ values (#{memId}, #{memPass}, #{memName}, #{memPoint})
 #{속성명} 또는 ${속성명}표현을 사용 -->
 <!--#{속성명}:jdbc의 ? 채우기와 같은 방식으로 동작 
 {속성명} : "+ 문자열 이어붙이기 방식 +" 으로 동작(해킹위험보안상 위험하므로 가급적 사용자제 )  -->
+
+<update id="updateMember" parameterType="MemberVo">
+update member set
+ mem_name = #{memName}, mem_point = #{memPoint}
+where mem_id = #{memId}
+</update>
 
 <delete id="deleteMember" parameterType="java.lang.String">
 delete from member where mem_id = #{memId}

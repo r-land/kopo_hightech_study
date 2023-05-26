@@ -9,11 +9,10 @@
 <meta charset='UTF-8'> 
 <title>회원관리</title>
 </head>            
-<body>             
+<body>
+<jsp:include page="/WEB-INF/views/menu.jsp"/>     
 <h1>회원목록 </h1>
-<a href='<%=request.getContextPath()%>/member/add.do' style="text-decoration:none">회원추가[o] </a>
-<a href='${pageContext.request.contextPath}/member/add.do' style="text-decoration:none">회원추가[o] </a>
-<a href='<c:url value="/member/add.do"/>' style="text-decoration:none">회원추가[o] </a><br>
+<a href='<c:url value="/member/add.do"/>' style="text-decoration:none">회원추가[o] </a>
 <a href='<%=request.getContextPath()%>/member/delform.do' style="text-decoration:none">회원삭제[x] </a>
 
 

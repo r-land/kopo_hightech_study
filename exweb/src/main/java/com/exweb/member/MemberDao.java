@@ -11,5 +11,8 @@ public interface MemberDao {
 	int deleteMember(String memId);
 
 	MemberVo selectMember(String memId);
+	
+	int updateMember(MemberVo vo);
 
+	MemberVo selectLogin(MemberVo vo);
 }

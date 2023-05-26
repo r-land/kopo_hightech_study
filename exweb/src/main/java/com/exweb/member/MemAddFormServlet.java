@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+//addservelt 다 이동 삭제해도 무방
 //웹브라우저에서 /member/addform.do 요청을 보내면
 //웹브라우저 화면에 회원정보를 입력하는 폼을 출력하도록
 //memaddformservlet 변경
