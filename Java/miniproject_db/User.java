@@ -1,13 +1,24 @@
-package miniproject;
+package miniproject_db;
 
 public class User {
+	int uid;
 	String name;
 	PayType paytype;
 	
-	public User(String name, PayType paytype) {
+	
+	public User(int uid, String name, PayType paytype) {
 		super();
+		this.uid = uid;
 		this.name = name;
 		this.paytype = paytype;
+	}
+	
+	
+	public int getUid() {
+		return uid;
+	}
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 	public String getName() {
 		return name;
@@ -21,9 +32,12 @@ public class User {
 	public void setPaytype(PayType paytype) {
 		this.paytype = paytype;
 	}
-	
+
+
 	@Override
 	public String toString() {
-		return name + "(" +  paytype + ")";
+		return "User [uid=" + uid + ", name=" + name + ", paytype=" + paytype + "]";
 	}
+	
+
 }

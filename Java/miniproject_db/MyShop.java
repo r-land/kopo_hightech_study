@@ -1,4 +1,4 @@
-package miniproject;
+package miniproject_db;
 
 import java.io.IOException;
 import java.util.ArrayList;
