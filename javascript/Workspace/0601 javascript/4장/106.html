@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 객체</title>
+</head>
+<script>
+var str = "Hello Thank you good luck to you";
+    document.write("<h3> Hello Thank you good luck to you</h3> <br>");                // g
+
+    document.write("str.charAt(16) = ");                // g
+    document.write(str.charAt(16), "<br>");                // g
+
+    document.write(" indexOf &#40;&#34; you &#34; &#41; = ");           // 12
+    document.write(str.indexOf("you"), "<br>");           // 12
+
+    document.write(" indexOf &#40;&#34; you &#34; &#41; , 16) = ");      // 29 16부터 제일 먼저 발견된 you
+    document.write(str.indexOf("you", 16), "<br>");      // 29 16부터 제일 먼저 발견된 you
+
+    document.write(" lastindexOf &#40;&#34; you &#34; &#41; = ");      // 29 오른쪽에서 왼쪽으로 처음 발견된 you
+    document.write(str.lastIndexOf("you"), "<br>");      // 29 오른쪽에서 왼쪽으로 처음 발견된 you
+
+    document.write(" lastindexOf &#40;&#34; you &#34; &#41; , 25) = "); // 12 25부터 왼쪽으로 처음 발견된 you
+    document.write(str.lastIndexOf("you", 25), "<br>"); // 12 25부터 왼쪽으로 처음 발견된 you
+
+    document.write(" match &#40;&#34; luck &#34; &#41; = ");            // luck 왼쪽에서 제일 처음 발견된 luck
+    document.write(str.match("luck"), "<br>");            // luck 왼쪽에서 제일 처음 발견된 luck
+
+    document.write("substr(21, 4) = ");             // luck 21번째부터 4글자
+    document.write(str.substr(21, 4), "<br>");             // luck 21번째부터 4글자
+
+    document.write(" search &#40;&#34; you &#34; &#41; = ");            // 12 왼쪽 처음 발견된 you의 index값
+    document.write(str.search("you"), "<br>");            // 12 왼쪽 처음 발견된 you의 index값
+
+    document.write("substring(6, 12) = ");         // Thank 6번째부터 12 이전까지
+    document.write(str.substring(6, 12), "<br>");         // Thank 6번째부터 12 이전까지
+
+    document.write("toLowerCase() = ");          // hello thank me good luck to you
+    document.write(str.toLowerCase(), "<br>");          // hello thank me good luck to you
+
+    document.write("replace &#40;&#34; you &#34; , &#34; me &#34; &#41; = ");    // Hello Thank me good luck to you
+    document.write(str.replace("you","me"), "<br>");    // Hello Thank me good luck to you
+
+    document.write("toUpperCase() =");          // HELLO THANK ME GOOD LUCK TO YOU
+    document.write(str.toUpperCase(), "<br>");          // HELLO THANK ME GOOD LUCK TO YOU
+
+    document.write("length = ");                    // 32 0부터 31까지
+    document.write(str.length, "<br><br>");                    // 32 0부터 31까지
+
+    var arr = str.split(" ");                   // 공백 문자열을 기준으로 문자를 분리
+    document.write("<strong> split 공백 문자열을 기준으로 문자를 분리 </strong> <br><br>"); 
+
+    document.write("arr[0] = ");      // Hello
+    document.write(arr[0], "<br>");      // Hello
+
+    document.write("arr[4] = ");      // luck
+    document.write(arr[4], "<br>");      // luck
+
+    document.write("charCodeAt(0) = ");       // 72 0번 인덱스의 문지 ‘H’의 아스키 코드값
+    document.write(str.charCodeAt(0), "<br>");       // 72 0번 인덱스의 문지 ‘H’의 아스키 코드값
+    document.write(" charCodeAt(0) : 0번 인덱스의 문지 ‘H’의 아스키 코드값 <br>");       // 72 0번 인덱스의 문지 ‘H’의 아스키 코드값
+
+
+    document.write(" fromCharCode(72) = ");  // H
+    document.write(String.fromCharCode(72), "<br>");  // H
+</script>
+
+<body>
+    
+</body>
+</html>

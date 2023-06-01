@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+            var greenArr = ["교대", "방배", "강남"];
+            var yellowArr = ["미금","정자","수서"];
+            document.write("greenArr 교대, 방배, 강남", "<br>");
+            document.write("yellowArr 미금,정자, 수서", "<br><br>");
+
+            greenArr.splice(2, 1, "서초", "역삼");
+            document.write("greenArr  splice 2, 1, 서초, 역삼 = ", "<br>");
+            document.write(greenArr, "<br><br>");
+
+            document.write("splice 2번 인덱스에서 1개 삭제 후 데이터 삽입", "<br><br>");
+            console.log(greenArr);
+
+            var data1 = yellowArr.pop( );
+            var data2 = yellowArr.shift( );
+            document.write("data1 = yellowArr.pop 결과 : 수서", "<br>");
+            document.write("data2 = yellowArr.shift 결과 : 미금", "<br>");
+            document.write("yellowArr 결과 : 정자", "<br><br>");
+
+           
+            yellowArr.push(data2);
+            document.write("yellowArr. push data2 = ");
+            document.write(yellowArr, "<br><br>");
+            console.log(yellowArr);
+            document.write("yellowArr 결과 : 정자, 미금", "<br><br>");
+
+            yellowArr.unshift(data1);
+            document.write("yellowArr. unshift data1 = ");
+            document.write(yellowArr, "<br><br>");
+            console.log(yellowArr);
+
+        </script>
+        
+</head>
+<body>
+    
+</body>
+</html>

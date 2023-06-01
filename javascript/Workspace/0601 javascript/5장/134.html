@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>색바꾸기</title>
+    <script>
+        var color = ["coral", "yellowgreen", "plum", "azure", "pink", "lightskyblue", "azure"];
+
+        var i = 0;
+        function changeColor() {
+          i++;
+          console.log(i);
+          if( i>=color.length ) {
+            i = 0;
+          }
+          var bodyTag = document.getElementById("theBody");
+          //getElemetById 아이디선택자와 비슷 바디에서 사용
+          bodyTag.style.backgroundColor = color[i];
+        }
+    
+    </script>
+</head>
+<body id = "theBody">
+    <button onclick="changeColor()">배경색 바꾸기</button><br>    
+</body>
+</html>
