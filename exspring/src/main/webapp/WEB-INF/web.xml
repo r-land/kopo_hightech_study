@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       
+http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+	
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
 	
-	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<!-- 웹애플리케이션(서버 )가 실행되면 최초1회실행-->
+	<!--contextConfigLocation 이름 찾는다 그럼 이거 찾겠지 ? /WEB-INF/spring/root-context.xml 스프링객체컨테이너 만들어서 모든애들이 쓸수있게 한다.-->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- Processes application requests -->
+	<!--/WEB-INF/spring/appServlet/servlet-context.xml 적혀있는대로 스프링객체컨테이너 만든다.-->
+	<!--스프링 컨테이너에 등록된 객체들을 사용하여 요청을 처리하는 서블릿 역할-->
+	<!-- contextloaderlistener 가 생성한 스프링객체 컨테이너가 있다면 부모컨테이너로 설정하고 여기서 한번처리 하다 없으면 부모(Loader)로 간다 위쪽오로 -->
+	<!-- dispatcherservlet(요청처리역할) 여러개 만드는건 예전버전담당 스프링만 담당 이런식으로쓰든가 -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -24,7 +28,8 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+	<!-- /는 defaultservlet 약속된 경로다 -->	
+	<!-- 다른 jsp 파일 또는 서블릿과 연결되지 않은 모든 주소(경로)에 대한 요청을 처리 -->	
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>

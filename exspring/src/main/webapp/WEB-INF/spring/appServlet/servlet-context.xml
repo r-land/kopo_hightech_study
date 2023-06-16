@@ -9,18 +9,20 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
-	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- @Controller와 같은 애노테이션을 사용한 컨트롤러를 사용하여 요청처리할때 필요한 객체들을 자동으로 등록-->
 	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- /resources/ 경로로 get방식 요청받으면 폴더 정적인 파일 읽어서 처리해주겠다.(응답으로전송하는 컨트롤러(핸들러)등록 -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- 컨트롤러(@Controller)에서 뷰이름(문자열) 반환한 경우 반환한 뷰이름의 앞과 뒤에 "/WEB-INF/views"와 ".jsp"를 붙인후  -->
+	<!-- 해당 경로로 이동(forward) 시키도록 설정  -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- com.exam.myapp 패키지 하위에 있는 @Component,@Controller,@ Repository @Configuration 등이 적용된 클래스들을 스프링(객체 컨테이너)에 등록 -->
 	<context:component-scan base-package="com.exam.myapp" />
 	
 	

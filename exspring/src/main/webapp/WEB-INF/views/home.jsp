@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
 	<title>Home</title>
@@ -9,6 +9,8 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  The time on model is ${a}. </P>
+<P>  The time on map is ${b}. </P>
+<P>  The time on modelMap is ${c}. </P>
 </body>
 </html>

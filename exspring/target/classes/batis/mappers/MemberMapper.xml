@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exweb.member.MemberDao">
+
+<!-- 	resultMap 을 사용하여 조회결과의 어떤 컬럼값을 MemberVo객체의 어떤 속성(변수)에 담을지(저장) 설정-->	
+<resultMap type="com.exweb.member.MemberVo" id="MemberMap">
+	<!-- 기본키(PK)에 해당되는 컬럼에 대해서는 result 대신 id 태그 사용 조인할때는 반드시 써야한다 -->
+	<id property="memId" column="mem_id" />
+	<result property="memPass" column="mem_pass" />
+	<result property="memName" column="mem_name" />
+	<result property="memPoint" column="mem_point" />
+</resultMap>
+ 	 <select id="selectMemberList" resultType="MemberVo">
+<!-- 결과받아오기 리절트타입 -->
+<!-- resultMap속성을 사용하여, id가 memberMap인 resultMap에 써놓은대로 조회결과를 담도록 설정  -->
+<!-- 	<select id="selectMemberList" resultMap="MemberMap"> -->
+   	 SELECT mem_id, mem_name, mem_point FROM member
+ 	 </select>
+ 	 
+ 	 
+ 	 <select id="selectMember" resultType="MemberVo">
+   	 SELECT mem_id, mem_name, mem_point FROM member
+   	 WHERE mem_id = #{memId}
+ 	 </select>
+ 	 
+ 	  <select id="selectLogin" resultType="MemberVo">
+   	 SELECT mem_id, mem_name, mem_point FROM member
+   	 WHERE mem_id = #{memId} and mem_pass = #{memPass}
+ 	 </select>
+ 	 
+
+<!-- 실행시키고싶은 sql문 여기에 놓기 -->
+<!-- 이파일이 담고 있는 sql문들 집합의 고유한 이름을 namespace 속성값으로 설정
+일반적으로 이 sql 문들 실행 할 때 사용 할 dao 인터페이스 이름을 지정  -->
+<!--등록할 sql문과 동일한 이름의 태그를 사용하여 sql 등록
+	이 파일 내에서 해당 sql문 고유한 이름을 id 속성값으로 설정
+	일반적으로 이 sql문을 실핼 할 때 사용 할 dao인터페이스의 메서드 이름을 지정 
+	매번 별명으로 하면 컬럼수 늘어나고 그럼 힘들어서 select 실행 결과의 한 행(row)를 담을 객체를 클래스명을 resulttype 속성에서 맵핑 마이바티스 플러그인설치하면편함 -->
+
+<!-- sql문 실행시 전달받는 데이터 타입을 parameterType 속성에 지정가능(생략도 가능) -->
+<insert id="insertMember" parameterType="MemberVo">
+insert into member (mem_id, mem_pass, mem_name, mem_point)
+values (#{memId}, #{memPass}, #{memName}, #{memPoint})
+</insert>
+<!-- 파라미터(인자)로 받은 객체의 속성(변수)값들을 sql문 내에서 사용하기 위해서, 
+#{속성명} 또는 ${속성명}표현을 사용 -->
+<!--#{속성명}:jdbc의 ? 채우기와 같은 방식으로 동작 
+{속성명} : "+ 문자열 이어붙이기 방식 +" 으로 동작(해킹위험보안상 위험하므로 가급적 사용자제 )  -->
+
+<update id="updateMember" parameterType="MemberVo">
+update member set
+ mem_name = #{memName}, mem_point = #{memPoint}
+where mem_id = #{memId}
+</update>
+
+<delete id="deleteMember" parameterType="java.lang.String">
+delete from member where mem_id = #{memId}
+</delete>
+<!-- 문자열,정수 등 단일값을 갖는 데이터를 파라미터(인자)로 받은 경우,속성이 없는데 
+#{속성명}의 속성명에는 어떤 이름을 써도 무방
+일반적으로 value 또는 변수명 사용  -->
+</mapper>
