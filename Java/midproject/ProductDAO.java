@@ -24,8 +24,8 @@ public class ProductDAO {
 	String sql;
 	
 	// ArrayList 상품정보를 모두 넣음
-	ArrayList<Product> items = null;
-	Vector<Integer> pcodeList = null;
+	ArrayList<Product> datas = null;
+	Vector<String> items = null;
 	
 	//connectDB : DB 연결
 	public void connectDB() {
@@ -48,7 +48,7 @@ public class ProductDAO {
 	// newProduct : 상품 등록 기능
 	public boolean newProduct(Product product) {
 		connectDB();
-		sql = "insert into product values(pname, price, manufacture) values (?, ?, ?)";
+		sql = "insert into product (pname,price,manufacture) values (?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product.getPname());
@@ -108,22 +108,35 @@ public class ProductDAO {
 		return true;
 	}
 	
+	
+	//getItems : pcode 리스트를 조회하는 기능 
+	public Vector<String> getItems(){
+		return items;
+	}
+	
 	// getAll 전체 정보를 조회하는 기능 
 	public ArrayList<Product> getAll(){
 		connectDB();
-		Product product = null;
-		sql = "select from product";
+		sql = "select * from product";
+	     
+		//전체 검색 데이터를 전달하기 위한 ArrayList
+		ArrayList<Product> datas = new ArrayList<Product>();
+		
+		// 관리코드 콤보박스 데이터를 위한 벡터 초기화
+		items = new Vector<String>();
+		items.add("전체");
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-			product = new Product();
+			Product product = new Product();
 			product.setPcode(rs.getInt("pcode"));
 			product.setPname(rs.getString("pname"));
 			product.setPrice(rs.getInt("pcode"));
 			product.setManufacture(rs.getString("manufacture"));
-			items.add(product);					//전체상품목록
-			pcodeList.add(rs.getInt("pcode")); //todo for GUI 콤보박스내 목록
+			datas.add(product);					//전체상품목록
+			items.add(String.valueOf(rs.getInt("pcode")));     //todo for GUI 콤보박스내 목록
 			}
 		}
 		catch(SQLException e) {
@@ -133,7 +146,7 @@ public class ProductDAO {
 		finally {
 			closeDB();
 		}
-		return items;
+		return datas;
 	}
 		
 	
@@ -142,7 +155,7 @@ public class ProductDAO {
 	public Product getProduct(int pcode) {
 		connectDB();
 		Product product = null;
-		sql = "select from product where pcode = ?";
+		sql = "select * from product where pcode = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -166,3 +179,6 @@ public class ProductDAO {
 	}
 	
 }
+
+
+
