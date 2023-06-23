@@ -20,8 +20,15 @@
 		이름:<input type='text' name='memName' value='<c:out value="${mvo.memName}"/>'/><br>        
 		포인트:<input type='number' name='memPoint' value='${mvo.memPoint}'/><br>  
 		<input type='submit'/>                                       
-		<input type='hidden' name='command' value='addMember'/>      
-		</form>                                                      
+		<input type='hidden' name='command' value='addMember'/>    
+		<c:url value="/member/del.do" var="delUrl">
+		<c:param name="memId">${mvo.memId}</c:param>
+		</c:url>
+		<a href='${delUrl}'>
+		<button type='button'>삭제</button></a>
+
+		</form>    
+		                                                  
                                
 		</body>    
 		</html>    

@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.exweb.member.MemberDao">
+<mapper namespace="com.exam.myapp.member.MemberDao">
 
 <!-- 	resultMap 을 사용하여 조회결과의 어떤 컬럼값을 MemberVo객체의 어떤 속성(변수)에 담을지(저장) 설정-->	
-<resultMap type="com.exweb.member.MemberVo" id="MemberMap">
+<resultMap type="MemberVo" id="MemberMap">
 	<!-- 기본키(PK)에 해당되는 컬럼에 대해서는 result 대신 id 태그 사용 조인할때는 반드시 써야한다 -->
 	<id property="memId" column="mem_id" />
 	<result property="memPass" column="mem_pass" />
