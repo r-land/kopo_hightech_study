@@ -1,4 +1,4 @@
---1
+--DB놀이 4.1
 create table nbook(
 bookid number,
 bookname varchar2(20),
@@ -112,3 +112,177 @@ select * from norders;
 
 --43
 select * from dual;
+
+-----------DB2.1
+select count(*) as 주문건수, max(saleprice)as 최고주문액
+from orders
+group by custid;
+
+--2.
+select count(*) as 주문건수, sum(saleprice)as 총판매액
+from orders
+group by bookid;
+
+--3.
+select count(*) as 주문건수, sum(saleprice)as 총판매액
+from orders
+group by bookid
+order by bookid;
+
+--4.
+select count(*) as 주문건수
+from orders
+where saleprice > 10000
+group by bookid
+having count(*)>=2;
+
+--5.
+select sum(o.saleprice) as 총주문금액
+from orders o, customer c
+where o.custid = c.custid 
+and c.name like '장미란';
+
+--6.
+select bookname, price
+from book
+where price >= 10000;
+
+--7.
+select *
+from book
+where bookid ='3';
+
+--8.
+select count(*)
+from customer;
+
+--9.
+select DISTINCT count(custid)
+from orders;
+
+--10.
+select count(*)
+from customer c left outer join orders o on (o.CUSTID = c.CUSTID)
+where o.ORDERID is null;
+
+--11.
+select DISTINCT c.name
+from customer c left outer join orders o on (o.CUSTID = c.CUSTID)
+where o.ORDERID is not null;
+
+--12.
+select DISTINCT c.name
+from customer c left outer join orders o on (o.CUSTID = c.CUSTID)
+where o.ORDERID is null;
+
+--13.
+select b.bookname, o.SALEPRICE
+from orders o, book b
+where o.BOOKID = b.bookid;
+
+--14.
+select orderdate, orderid
+from orders
+where orderdate BETWEEN '14/07/01' and '14/07/05';
+
+--15.
+select *
+from book
+order by publisher, price desc;
+
+--16.
+select *
+from orders o, book b
+where o.BOOKID = b.bookid;
+
+--17.
+select *
+from orders o, book b
+where o.BOOKID = b.bookid
+order by b.BOOKID;
+
+--18.
+select bookname, price
+from book;
+
+--19.
+select b.bookname, c.name, c.phone
+from orders o, book b, customer c
+where c.custid=o.custid and b.bookid= o.bookid ;
+
+--20
+select c.name, o.saleprice
+from orders o, book b, customer c
+where c.custid=o.custid and b.bookid= o.bookid 
+and b.bookname = '축구의 역사';
+
+--21.
+select b.bookname, c.name
+from book b left outer join orders o on (o.bookid = b.bookid) 
+left outer join customer c on (c.custid = o.custid);
+
+--22.
+select bookname, price
+from (select * from book order by price desc)
+where rownum =1 ;
+
+--23.
+select avg(saleprice)
+from orders
+group by custid;
+
+--24.
+select c.name, b.bookname, o.orderdate
+from orders o, book b, customer c
+where c.custid=o.custid and b.bookid= o.bookid 
+and o.custid = '1';
+
+--25.
+select c.name, c.phone
+from customer c
+where exists (select c.custid from orders o);
+
+--26.
+select name
+from orders o, customer c
+where c.custid = o.custid
+group by c.name
+having avg(saleprice)
+ > (select avg(saleprice) 
+from orders);
+
+--27.
+select b.bookname
+from orders o, book b, customer c
+where c.custid=o.custid and b.bookid= o.bookid 
+and c.name like '김연아';
+
+--28.
+select b.bookname
+FROM customer c, orders o, book b
+minus
+select b.bookname
+FROM customer c, orders o, book b
+where c.custid=o.custid and b.bookid= o.bookid and name = '김연아';
+
+--29.
+SELECT *
+FROM book b, orders o
+WHERE b.BOOKID = o.BOOKID
+AND b.PRICE-o.SALEPRICE = (
+SELECT max(b.PRICE-o.SALEPRICE)
+FROM book b, ORDERS o
+WHERE b.BOOKID = o.BOOKID
+);
+
+--30
+select b.bookname, b.publisher
+from( select * from (select bookid from orders order by 1 desc)
+where rownum=1) o, book b
+where b.bookid = o.bookid;
+
+
+
+
+
+
