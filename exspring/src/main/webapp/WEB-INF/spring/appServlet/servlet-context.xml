@@ -28,6 +28,20 @@
 	<!-- com.exam.myapp 패키지 하위에 있는 @Component,@Controller,@ Repository @Configuration 등이 적용된 클래스들을 스프링(객체 컨테이너)에 등록 -->
 	<context:component-scan base-package="com.exam.myapp" />
 	
+	<!-- 핸들러인터셉터 등록 -->
+	<interceptors>
+		<interceptor>
+			<!-- 인터셉터를 실행할 요청 경로(주소) 설정  -->
+			<mapping path="/**"/>
+			<!-- 인터셉터를 실행하지 않을 요청 경로(주소) 설정  -->
+			<exclude-mapping path="/member/login.do"/>
+			<exclude-mapping path="/member/add.do"/>
+			<!-- 실행할 인터셉터 클래스 설정 -->
+			<beans:bean class="com.exam.myapp.comm.LoginInterceptor"/>
+		</interceptor>
+	
+	</interceptors>
+	
 		<!-- 데이터베이스 입출력을 위한 객체들을 등록하는 부분 -->
 	
  	 <!-- 스프링의 트랜잭션 관리를 담당할 객체 등록 -->
@@ -66,6 +80,9 @@
 	<!-- <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
   <beans:constructor-arg index="0" ref="sqlSessionFactory" />
 	</beans:bean> -->
+	
+	
+	
 	
  	 <!-- com.exam.myapp 패키지 하위에 있는 @Mapper가 붙어있는 '인터페이스'의 구현체를 자동 생성 및 등록 -->
  	 <!-- 인터페이스가 여러개일 경우 구별할 수 있는 annotation@ 붙여주기 사용자지정가능-->
