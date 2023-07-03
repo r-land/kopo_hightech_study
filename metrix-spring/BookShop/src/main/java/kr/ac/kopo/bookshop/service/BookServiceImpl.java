@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.bookshop.dao.BookDao;
 import kr.ac.kopo.bookshop.model.Book;
+import kr.ac.kopo.bookshop.pager.Pager;
 @Service
 public class BookServiceImpl implements BookService {
 	
@@ -14,9 +15,10 @@ public class BookServiceImpl implements BookService {
 	BookDao dao;
 
 	@Override
-	public List<Book> list() {
-		
-		return dao.list();
+	public List<Book> list(Pager pager) {
+		int total = dao.total(pager);
+	
+		return dao.list(pager);
 	}
 
 	@Override

@@ -44,7 +44,26 @@
 							<td colspan = "5"> 검색 된 도서가 없습니다. </td>
 						</tr>
 					</c:if>
-				</tbody>	
+				</tbody>
+				
+				<tfoot>
+					<tr>
+						<td colspan="5">
+						  <ul class="pagination justify-content-center mt-3">
+							    <li class="page-item"><a class="page-link" href="?page=1">처음</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=1">이전</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=4">4</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=5">5</a></li>
+								<li class="page-item"><a class="page-link" href="?page=1">다음</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=${pager.last}">마지막</a></li>
+						 </ul>
+					
+						</td>
+					</tr>
+				</tfoot>	
 			</table>
 		</div>
 		<div class="mb-5">
