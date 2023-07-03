@@ -14,11 +14,15 @@
 		<body>             
 		<h1> 게시글정보변경 </h1>
 		<form action='${pageContext.request.contextPath}/bbs/edit.do' method='post'>  
-		<input type="hidden" name='bbsNo' value="${bbsVo.bbsNo}"/><br> 
-		제목:<input type='text' name='bbsTitle' value='<c:out value="${bbsVo.bbsTitle}"/>'/><br>        
-		내용:<textarea name='bbsContent' cols="22" rows="5"><c:out value="${bbsVo.bbsContent}"/></textarea><br>        
-		작성자:<c:out value="${bbsVo.bbsWriter}"/><br>        
-		등록일:<fmt:formatDate value="${bbsVo.bbsRegDate}" pattern="yyyy-MM-dd HH:mm:ss"/><br>  
+		<input type="hidden" name='bbsNo' value="${bbsMvo.bbsNo}"/><br> 
+		제목:<input type='text' name='bbsTitle' value='<c:out value="${bbsMvo.bbsTitle}"/>'/><br>        
+		내용:<textarea name='bbsContent' cols="22" rows="5"><c:out value="${bbsMvo.bbsContent}"/></textarea><br>        
+		작성자:<c:out value="${bbsMvo.bbsWriter}"/><br>        
+		등록일:<fmt:formatDate value="${bbsMvo.bbsRegDate}" pattern="yyyy-MM-dd HH:mm:ss"/><br>  
+		
+		<c:forEach var="vo" items="${bbsMvo.attachList}">
+			첨부파일: <a href="${pageContext.request.contextPath}/bbs/down.do?attNo=${vo.attNo}"><c:out value= "${vo.attOrgName}"/></a><br>
+		</c:forEach>
 		<input type='submit' value="저장"/>                                       
 	
 		<a href='${pageContext.request.contextPath}/bbs/del.do?bbsNo=${bbsVo.bbsNo}'>

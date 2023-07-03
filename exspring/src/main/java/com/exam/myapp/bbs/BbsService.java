@@ -1,5 +1,6 @@
 package com.exam.myapp.bbs;
 
+import java.io.File;
 import java.util.List;
 
 public interface BbsService {
@@ -13,5 +14,11 @@ public interface BbsService {
 	BbsVo selectBbs(int memId);
 	
 	int updateBbs(BbsVo vo);
+
+	AttachVo selectAttach(int attNo);
+
+	File getAttachFile(AttachVo vo);
+
+
 
 }

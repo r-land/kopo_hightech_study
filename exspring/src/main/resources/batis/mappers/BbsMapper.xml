@@ -2,16 +2,25 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.exam.myapp.bbs.BbsrDao">
+<mapper namespace="com.exam.myapp.bbs.BbsDao">
 
-<!-- 	resultMap 을 사용하여 조회결과의 어떤 컬럼값을 MemberVo객체의 어떤 속성(변수)에 담을지(저장) 설정-->	
-<resultMap type="MemberVo" id="MemberMap">
-	<!-- 기본키(PK)에 해당되는 컬럼에 대해서는 result 대신 id 태그 사용 조인할때는 반드시 써야한다 -->
-	<id property="memId" column="mem_id" />
-	<result property="memPass" column="mem_pass" />
-	<result property="memName" column="mem_name" />
-	<result property="memPoint" column="mem_point" />
-</resultMap>
+
+	<resultMap type="BbsVo" id="BbsMap">
+		<id property="bbsNo" column="bbs_no" />
+		<result property="bbsTitle" column="bbs_title" />
+		<result property="bbsContent" column="bbs_content" />
+		<result property="bbsWriter" column="bbs_writer" />
+		<result property="bbsRegDate" column="bbs_reg_date" />
+		<result property="bbsCount" column="bbs_count" />
+		<!--join 조회결과를 담기 위한 resultMap 
+		1:1 관계이면 association 엘리먼트를 1:N 관계이면 collection 엘리먼트 사용 -->
+		<collection property="attachList" ofType="AttachVo"> 
+		 	<id property="attNo" column="att_no" />
+			<result property="attOrgName" column="att_org_name" />
+			<result property="attNewName" column="att_new_name" />
+			<result property="attBbsNo" column="att_bbs_no" />
+		</collection>
+	</resultMap>
  	
  	 <select id="selectBbsList" resultType="BbsVo">
  	 SELECT bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_count 
@@ -19,27 +28,31 @@
  	 </select>
  	 
  	 
- 	 <select id="selectBbs" resultType="BbsVo">
- 	 SELECT bbs_no, bbs_title, bbs_content, bbs_writer, bbs_reg_date, bbs_count 
- 	 FROM bbs
+ 	 <select id="selectBbs" resultMap="BbsMap">
+ 	 SELECT bbs_no, bbs_title, bbs_content, bbs_writer, bbs_reg_date, bbs_count,
+   		att_no, att_org_name, att_new_name, att_bbs_no
+ 	 FROM bbs LEFT OUTER JOIN attach ON bbs_no = att_bbs_no
    	 WHERE bbs_no = #{bbsNo}
  	 </select>
 
 
-<insert id="insertBbs">
+	<insert id="insertBbs">
+	<selectKey keyProperty="bbsNo" resultType="int" order="BEFORE">
+		SELECT bbs_seq.NEXTVAL FROM DUAL
+	</selectKey>
 	insert into bbs (bbs_no, bbs_title, bbs_content, bbs_writer)
-	values (bbs_seq.NEXTVAL, #{bbsTitle}, #{bbsContent}, #{bbsWriter})
-</insert>
+	values (#{bbsNo}, #{bbsTitle}, #{bbsContent}, #{bbsWriter})
+	</insert>
 
 
-<update id="updateBbs">
-update bbs 
-set bbs_title = #{bbsTitle}, bbs_content = #{bbsContent}
-WHERE bbs_no = #{bbsNo}
-</update>
-
-<delete id="deleteMember">
-delete from bbs where bbs_no = #{bbsNo}
-</delete>
+	<update id="updateBbs">
+	update bbs 
+	set bbs_title = #{bbsTitle}, bbs_content = #{bbsContent}
+	WHERE bbs_no = #{bbsNo}
+	</update>
+	
+	<delete id="deleteBbs">
+	delete from bbs where bbs_no = #{bbsNo}
+	</delete>
 
 </mapper>
