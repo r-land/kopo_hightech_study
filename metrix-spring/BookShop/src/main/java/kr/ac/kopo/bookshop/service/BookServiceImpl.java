@@ -17,7 +17,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Book> list(Pager pager) {
 		int total = dao.total(pager);
-	
+		pager.setTotal(total);
 		return dao.list(pager);
 	}
 

@@ -18,6 +18,25 @@
 			<h3>도서 목록</h3>
 		</div>
 		<div>
+			<form>
+				<div class="row mb-2">
+					<div class="col">
+						<select name="search" class="form-select form-select-sm">
+							<option value="1">도서번호</option>
+							<option value="2">도서명</option>
+							<option value="3">출판사</option>						
+						</select>
+					</div>
+					<div class="col-8">
+						<input type="text" name="keyword" class="form-control form-control-sm">
+					</div>
+					<div class="col d-grid">
+						<button class="btn btn-sm btn-primary">검색</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div>
 			<table border="1" class="table table-striped table-hover">
 				<thead class="table-dark">
 					<tr>
@@ -51,13 +70,11 @@
 						<td colspan="5">
 						  <ul class="pagination justify-content-center mt-3">
 							    <li class="page-item"><a class="page-link" href="?page=1">처음</a></li>
-							    <li class="page-item"><a class="page-link" href="?page=1">이전</a></li>
-							    <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-							    <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-							    <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
-							    <li class="page-item"><a class="page-link" href="?page=4">4</a></li>
-							    <li class="page-item"><a class="page-link" href="?page=5">5</a></li>
-								<li class="page-item"><a class="page-link" href="?page=1">다음</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=${pager.prev}">이전</a></li>
+							    <c:forEach var="page" items="${pager.list}">
+							    	<li class="page-item"><a class="page-link ${page == pager.page ? 'active' : ''}" href="?page=${page}">${page}</a></li>
+							    </c:forEach>
+								<li class="page-item"><a class="page-link" href="?page=${pager.next}">다음</a></li>
 							    <li class="page-item"><a class="page-link" href="?page=${pager.last}">마지막</a></li>
 						 </ul>
 					
