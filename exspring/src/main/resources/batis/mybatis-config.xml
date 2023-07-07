@@ -14,6 +14,7 @@
 	<typeAlias alias="MemberVo" type="com.exam.myapp.member.MemberVo"/>
 	<typeAlias alias="BbsVo" type="com.exam.myapp.bbs.BbsVo"/>
 	<typeAlias alias="AttachVo" type="com.exam.myapp.bbs.AttachVo"/>
+	<typeAlias alias="ReplyVo" type="com.exam.myapp.reply.ReplyVo"/>
 	<!-- 패키지 태그를 사용하면 지정한 패키지 하위의 모든 클래스들에 대한 별명을 자동 등록 되고 하면 resultType 안써도 됨 -->
 	<!--별명은 패키지명을 제외한 심플클래스이름으로 설정 하지만 같은이름의 클래스가 있으면 주의 -->
 <!-- 	<package name="com.exam.myapp"/> -->

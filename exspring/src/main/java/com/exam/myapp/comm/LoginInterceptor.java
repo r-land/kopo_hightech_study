@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.exam.myapp.member.MemberVo;

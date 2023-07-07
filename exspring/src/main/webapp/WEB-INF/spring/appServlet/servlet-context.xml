@@ -29,9 +29,13 @@
 	<!-- com.exam.myapp 패키지 하위에 있는 @Component,@Controller,@ Repository @Configuration 등이 적용된 클래스들을 스프링(객체 컨테이너)에 등록 -->
 	<context:component-scan base-package="com.exam.myapp" />
 	
-	<!-- 파일이 포함된 멀티파트 form 데이터를 해석할 수 있도록 CommonsMultipartResolver 또는 StandardServletMultipartResolver를 -->
+	<!-- 파일이 포함된 멀티파트 form 데이터를 해석할 수 있도록 CommonsMultipartResolver 또는 StandardServletMultipartResolver(설정많고 버전탐)를 -->
 	<!-- "multipartResolver" 라는 이름으로 스프링에 등록 -->
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></beans:bean>
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 한 요청 당 최대 업로드 용량(바이트)로 설정 -->
+		<beans:property name="maxUploadSize" value="-1"/>
+	
+	</beans:bean>
 	
 	
 	<!-- 핸들러인터셉터 등록 -->
@@ -47,6 +51,12 @@
 		</interceptor>
 	
 	</interceptors>
+	
+	<!-- location 속성에 지정한 프로퍼티 파일의 값을 읽어서 
+	스프링 컨테이너에(프로퍼티 값으로) 등록 -->
+	<!-- 스프링 XML 설정파일 또는 @Value 에서 ${프로퍼티키} 표현으로 프로퍼티값을 사용 --> 
+	<!--아래 같은 경우@Value("C:/Temp/upload") 아님 ${bbs.upload.path} 이렇게 쓰고 *. 이하 프로퍼티 파일읽어옴  -->
+	<context:property-placeholder location="classpath:config/*.properties"/>
 	
 		<!-- 데이터베이스 입출력을 위한 객체들을 등록하는 부분 -->
 	

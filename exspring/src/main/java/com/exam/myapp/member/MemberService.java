@@ -15,4 +15,5 @@ public interface MemberService {
 	int updateMember(MemberVo vo);
 
 	MemberVo selectLogin(MemberVo vo);
+
 }

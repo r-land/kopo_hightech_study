@@ -14,25 +14,39 @@
 		<result property="bbsCount" column="bbs_count" />
 		<!--join 조회결과를 담기 위한 resultMap 
 		1:1 관계이면 association 엘리먼트를 1:N 관계이면 collection 엘리먼트 사용 -->
-		<collection property="attachList" ofType="AttachVo"> 
+<!-- 		<collection property="attachList" ofType="AttachVo"> 
 		 	<id property="attNo" column="att_no" />
 			<result property="attOrgName" column="att_org_name" />
 			<result property="attNewName" column="att_new_name" />
 			<result property="attBbsNo" column="att_bbs_no" />
-		</collection>
+		</collection> -->
+		
+		<!-- bbs_no 컬럼값을 파라미터로 전달하면서 
+		"com.exam.myapp.bbs.AttachDao.selectAttachList" sql문 실행,
+		그 결과를 attachList 속성값으로 저장 -->
+		<collection property="attachList" ofType="AttachVo"  column="bbs_no"
+		select="com.exam.myapp.bbs.AttachDao.selectAttachList"/>
 	</resultMap>
  	
  	 <select id="selectBbsList" resultType="BbsVo">
- 	 SELECT bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_count 
- 	 FROM bbs
+	 	 SELECT bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_count 
+	 	 FROM bbs
  	 </select>
  	 
  	 
  	 <select id="selectBbs" resultMap="BbsMap">
- 	 SELECT bbs_no, bbs_title, bbs_content, bbs_writer, bbs_reg_date, bbs_count,
-   		att_no, att_org_name, att_new_name, att_bbs_no
- 	 FROM bbs LEFT OUTER JOIN attach ON bbs_no = att_bbs_no
-   	 WHERE bbs_no = #{bbsNo}
+<!-- 	 	 SELECT bbs_no, bbs_title, bbs_content, bbs_writer, bbs_reg_date, bbs_count,
+	   		att_no, att_org_name, att_new_name, att_bbs_no
+	 	 FROM (
+	 	 		SELECT bbs_no, bbs_title, bbs_content, bbs_writer, bbs_reg_date, bbs_count
+	 	 		FROM bbs 
+	 	 		WHERE bbs_no = #{bbsNo}
+	 	 )		
+	 	 LEFT OUTER JOIN attach ON bbs_no = att_bbs_no --> 	
+	 	 
+	 	 SELECT bbs_no, bbs_title, bbs_content, bbs_writer, bbs_reg_date, bbs_count
+	 	 FROM bbs 
+	 	 WHERE bbs_no = #{bbsNo}
  	 </select>
 
 
@@ -40,8 +54,8 @@
 	<selectKey keyProperty="bbsNo" resultType="int" order="BEFORE">
 		SELECT bbs_seq.NEXTVAL FROM DUAL
 	</selectKey>
-	insert into bbs (bbs_no, bbs_title, bbs_content, bbs_writer)
-	values (#{bbsNo}, #{bbsTitle}, #{bbsContent}, #{bbsWriter})
+		insert into bbs (bbs_no, bbs_title, bbs_content, bbs_writer)
+		values (#{bbsNo}, #{bbsTitle}, #{bbsContent}, #{bbsWriter})
 	</insert>
 
 

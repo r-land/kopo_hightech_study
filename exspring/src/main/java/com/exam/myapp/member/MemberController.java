@@ -71,7 +71,7 @@ public class MemberController {
 
 	}else { //로그인 성공
 		session.setAttribute("loginUser", mvo);
-		return "redirect:/member/list.do";
+		return "redirect:/bbs/list.do";
 	}
 
 	

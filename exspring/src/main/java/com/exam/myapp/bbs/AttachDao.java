@@ -12,12 +12,12 @@ public interface AttachDao {
 
 		AttachVo selectAttach(int attNo);
 
-	/*
-	 * int deleteBbs(int memId);
-	 * 
-	 * BbsVo selectBbs(int memId);
-	 * 
-	 * int updateBbs(BbsVo vo);
-	 */
+		
+		int deleteAttach(int attNo);
+		
+		//BbsVo selectBbs(int memId);
+		
+		//int updateBbs(BbsVo vo);
+		
 
 }

@@ -1,10 +1,8 @@
 package com.exam.ex;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
 
 // @Component
 //@Aspect //스프링 aop설정을 담고 있는 클래스임을 표시

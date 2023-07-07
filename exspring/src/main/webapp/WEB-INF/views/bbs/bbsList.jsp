@@ -18,20 +18,24 @@
 
 <table>
 	<thead>
-		<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일시</th></tr>
+		<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일시</th></tr><th>수정변경</th></tr>
 	</thead>
 	<tbody>
 		<c:forEach var="vo" items='${bbsList}'>
 			<tr>
 			<td>${vo.bbsNo}</td>
 			<td>
-				<a href='${pageContext.request.contextPath}/bbs/edit.do?bbsNo=${vo.bbsNo}' style="text-decoration:none">
+				<a href="${pageContext.request.contextPath}/bbs/edit.do?bbsNo=${vo.bbsNo}" style="text-decoration:none">
 				<c:out value="${vo.bbsTitle}"/>
 				</a>
 			</td>
 			<td><c:out value="${vo.bbsWriter}"/></td>
 			<td><fmt:formatDate value="${vo.bbsRegDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-
+			<c:if test="{loginUser.memId == vo.bbsWriter}">
+			<td><a href="${pageContext.request.contextPath}/bbs/edit.do?bbsNo=${vo.bbsNo}" >
+				<button type='button'>변경</button></a>
+			</td>
+			</c:if>
 <%-- 	${fn:escapeXml} or <c:out> 보안상 --%>
 
 			</tr>
