@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -60,16 +61,18 @@ public class BbsController {
 		return "bbs/bbsEdit";		
 	}
 	
-	@RequestMapping(value = "edit.do",method = RequestMethod.POST)
-	public String edit(BbsVo vo) {			
+	@PostMapping("edit.do")//@RequestMapping(value = "edit.do",method = RequestMethod.POST)
+	public String edit(BbsVo vo, @SessionAttribute("loginUser") MemberVo mvo) {	
+		vo.setBbsWriter(mvo.getMemId());
 		int n = bbsService.updateBbs(vo);
 		System.out.println(n + "개의 게시글 변경 성공");
 		return "redirect:/bbs/list.do";
 	}
 
-	@RequestMapping(value = "del.do",method = RequestMethod.GET)
-		public String service(int bbsNo) {
-		int n = bbsService.deleteBbs(bbsNo);
+	@GetMapping("del.do")//@RequestMapping(value = "del.do",method = RequestMethod.GET)
+	public String service(BbsVo vo, @SessionAttribute("loginUser") MemberVo mvo) {	
+		vo.setBbsWriter(mvo.getMemId());
+		int n = bbsService.deleteBbs(vo);
 		System.out.println(n + "개의 게시글 삭제 성공");
 		return "redirect:/bbs/list.do";
 	}

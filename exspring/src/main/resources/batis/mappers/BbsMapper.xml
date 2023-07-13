@@ -62,7 +62,7 @@
 	<update id="updateBbs">
 	update bbs 
 	set bbs_title = #{bbsTitle}, bbs_content = #{bbsContent}
-	WHERE bbs_no = #{bbsNo}
+	WHERE bbs_no = #{bbsNo} and bbs_writer = #{bbsWriter} 
 	</update>
 	
 	<delete id="deleteBbs">

@@ -81,13 +81,16 @@ public class BbsServiceImpl implements BbsService{
 	}
 
 	@Override
-	public int deleteBbs(int bbsNo) {
-		BbsVo bbsVo = bbsDao.selectBbs(bbsNo); // 게시글 정보 조회
+	public int deleteBbs(BbsVo vo) {
+		BbsVo bbsVo = bbsDao.selectBbs(vo.getBbsNo()); // 게시글 정보 조회
+		if(! bbsVo.getBbsWriter().equals(vo.getBbsWriter() ) ) {
+			return 0;
+		}
 		for (AttachVo attVo : bbsVo.getAttachList()) { //게시글의 첨부파일을 하나씩 꺼내서 
 			new File(uploadPath, attVo.getAttNewName()).delete(); //디스크에서 첨부파일 삭제
 			attachDao.deleteAttach(attVo.getAttNo()); //테이블에서 첨부파일 삭제
 	}
-		return bbsDao.deleteBbs(bbsNo); //테이블에서 게시글 삭제
+		return bbsDao.deleteBbs(vo.getBbsNo()); //테이블에서 게시글 삭제
 	}
 
 	@Override

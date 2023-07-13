@@ -17,5 +17,8 @@
 	 	 ORDER BY rep_reg_date DESC
  	 </select>
 	
-
+	<delete id="deleteReply">
+		delete from reply 
+		where rep_no = #{repNo} and rep_writer = #{repWriter}
+	</delete>
 </mapper>

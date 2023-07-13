@@ -9,7 +9,7 @@ public interface BbsService {
 
 	int insertBbs(BbsVo vo);
 
-	int deleteBbs(int memId);
+	int deleteBbs(BbsVo vo);
 
 	BbsVo selectBbs(int memId);
 	
