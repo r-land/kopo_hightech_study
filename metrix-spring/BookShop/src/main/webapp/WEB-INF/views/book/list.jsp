@@ -20,15 +20,17 @@
 		<div>
 			<form>
 				<div class="row mb-2">
+					<div class="col-3"></div>
 					<div class="col">
 						<select name="search" class="form-select form-select-sm">
-							<option value="1">도서번호</option>
-							<option value="2">도서명</option>
-							<option value="3">출판사</option>						
+							<option value="0">검색항목을 선택하세요</option>
+							<option value="1" ${pager.search == 1 ? "selected" : "" }>도서번호</option>
+							<option value="2" ${pager.search == 2 ? "selected" : "" }>도서명</option>
+							<option value="3" ${pager.search == 3 ? "selected" : "" }>출판사</option>						
 						</select>
 					</div>
-					<div class="col-8">
-						<input type="text" name="keyword" class="form-control form-control-sm">
+					<div class="col-5">
+						<input type="text" name="keyword" class="form-control form-control-sm" value="${pager.keyword}">
 					</div>
 					<div class="col d-grid">
 						<button class="btn btn-sm btn-primary">검색</button>
@@ -69,13 +71,13 @@
 					<tr>
 						<td colspan="5">
 						  <ul class="pagination justify-content-center mt-3">
-							    <li class="page-item"><a class="page-link" href="?page=1">처음</a></li>
-							    <li class="page-item"><a class="page-link" href="?page=${pager.prev}">이전</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=1${pager.query}}">처음</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=${pager.prev}${pager.query}">이전</a></li>
 							    <c:forEach var="page" items="${pager.list}">
-							    	<li class="page-item"><a class="page-link ${page == pager.page ? 'active' : ''}" href="?page=${page}">${page}</a></li>
+							    	<li class="page-item"><a class="page-link ${page == pager.page ? 'active' : ''}" href="?page=${page}${pager.query} ">${page}</a></li>
 							    </c:forEach>
-								<li class="page-item"><a class="page-link" href="?page=${pager.next}">다음</a></li>
-							    <li class="page-item"><a class="page-link" href="?page=${pager.last}">마지막</a></li>
+								<li class="page-item"><a class="page-link" href="?page=${pager.next}&${pager.query}">다음</a></li>
+							    <li class="page-item"><a class="page-link" href="?page=${pager.last}&${pager.query}">마지막</a></li>
 						 </ul>
 					
 						</td>

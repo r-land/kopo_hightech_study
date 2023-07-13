@@ -9,7 +9,15 @@ public class Pager {
 	private float total;
 	private int perGroup = 3;
 	
+	private int search;
+	private String keyword;
 	
+	public String getQuery() {
+		String queryString = "";
+		if(search > 0)
+			queryString += "&search=" + search + "&keyword=" + keyword;
+		return queryString;
+	}
 	
 	
 	public int getPage() {
@@ -64,5 +72,20 @@ public class Pager {
 		
 		return list;
 		
+	}
+	public int getSearch() {
+		return search;
+	}
+	public void setSearch(int search) {
+		this.search = search;
+	}
+	public String getKeyword() {
+		if(search < 1)
+			keyword = "";
+		
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 }
