@@ -2,14 +2,8 @@
     pageEncoding="UTF-8"%>
 
     
-		<!DOCTYPE html>    
-		<html>             
-		<head>             
-		<meta charset='UTF-8'>
-		<title>게시판</title>
-		</head>             
-		<body>        
-		<jsp:include page="/WEB-INF/views/menu.jsp"/>     
+      
+		<%-- <jsp:include page="/WEB-INF/views/menu.jsp"/>     --%> 
 		
 		<!--파일을 포함하여 전송하는 form 엘리먼트는 enctype="multipart/form-data"-->
 		<h1> 새글쓰기 </h1>
@@ -22,6 +16,3 @@
    		                                
 		</form>                                                      
                                
-		</body>    
-		</html>    
-		

@@ -4,21 +4,39 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 
-<!DOCTYPE html>     
+<!-- <!DOCTYPE html>     
 <html>              
 <head>              
 <meta charset='UTF-8'> 
 <title>게시판</title>
 </head>            
-<body>
-<jsp:include page="/WEB-INF/views/menu.jsp"/>     
+<body> -->
+<%-- <jsp:include page="/WEB-INF/views/menu.jsp"/>   --%>   
 <h1>게시글목록 </h1>
-
-<a href="${pageContext.request.contextPath}/bbs/add.do" style="text-decoration:none"> 글쓰기</a>
-
+<div style=" text-align: left;">
+	
+	<form action="${pageContext.request.contextPath}/bbs/list.do">
+		<select name="searchType">
+			<%-- <option value="title" ${searchInfo.searchType=='title'?'selected':''}>제목</option>
+			<option value="content" ${searchInfo.searchType=='content'?'selected':''}>내용</option>
+			<option value="total" ${searchInfo.searchType=='total'?'selected':''}>제목+내용</option> --%>
+			<option value="title">제목</option>
+			<option value="content" >내용</option>
+			<option value="total" >제목+내용</option>
+		</select>
+		<script type="text/javascript">
+		//	document.querySelector('[name="searchType"]').value = "${searchInfo.searchType}";
+			$('[name="searchType"]').val('${searchInfo.searchType}');
+		</script>
+		<input type="text" name="searchWord" value="${searchInfo.searchWord}"/>
+		<input type="submit" value="검색" />	
+	</form>
+	<div><a href="${pageContext.request.contextPath}/bbs/add.do" style="text-decoration:none"> 
+	<button type='button'>글쓰기</button></a></div>
+</div>
 <table>
 	<thead>
-		<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일시</th></tr><th>수정변경</th></tr>
+		<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일시</th></tr>
 	</thead>
 	<tbody>
 		<c:forEach var="vo" items='${bbsList}'>
@@ -43,6 +61,7 @@
 
 	</tbody>
 </table>
+
 
 
 </body>           

@@ -28,9 +28,41 @@
 		select="com.exam.myapp.bbs.AttachDao.selectAttachList"/>
 	</resultMap>
  	
+ 	<sql id="searchCondition">
+	 	 <!-- trim 태그 내부에 내용이 있을 경우에만, 내용 앞에 prefix 속성값 추가 -->
+	 	 <!-- 내용시작 부분이 prefixOverrides 속성값인 경우 그 부분을 내용에서 삭제 -->
+	 	 <trim prefix="WHERE" prefixOverrides="AND |OR ">
+		 	 <if test="(searchType=='title' or searchType=='total') and searchWord!=null and searchWord!=''">
+		 		 bbs_title LIKE '%' || #{searchWord} || '%' 
+		 	 </if>
+		 	 <if test="(searchType=='content' or searchType=='total') and searchWord!=null and searchWord!=''">
+		 		 or bbs_content LIKE '%' || #{searchWord} || '%' 
+		 	 </if>
+	 	 </trim>
+ 	</sql>
+ 	
+ 	
  	 <select id="selectBbsList" resultType="BbsVo">
-	 	 SELECT bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_count 
+	 		SELECT rnum, bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_count
+    		FROM(
+    			SELECT rownum rnum, bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_count
+	 			FROM (
+	 	 		  SELECT bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_count 
+	 			  FROM bbs
+	 			  <include refid="searchCondition"></include>
+	 	 		  ORDER BY bbs_reg_date desc 
+	 	 		)	
+	 			<![CDATA[WHERE rownum <= #{lastRecordIndex}]]>
+    		 )
+    		<![CDATA[WHERE #{firstRecordIndex} < rnum]]>
+ 	 </select>
+ 	 
+ 	 <select id="selectBbsCount" resultType="int">
+	 	 SELECT count(*)
 	 	 FROM bbs
+	 	 <include refid="searchCondition"></include>
+	 	 
+	 	 
  	 </select>
  	 
  	 

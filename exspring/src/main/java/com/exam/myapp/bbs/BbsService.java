@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface BbsService {
 
-	List<BbsVo> selectBbsList();
+	List<BbsVo> selectBbsList(SearchInfo info);
 
 	int insertBbs(BbsVo vo);
 
@@ -18,6 +18,8 @@ public interface BbsService {
 	AttachVo selectAttach(int attNo);
 
 	File getAttachFile(AttachVo vo);
+
+	int selectBbsCount(SearchInfo info);
 
 
 

@@ -8,7 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ContentDisposition;
@@ -22,8 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import com.exam.myapp.member.MemberService;
 import com.exam.myapp.member.MemberVo;
+
+
 
 @Controller
 @RequestMapping("/bbs/") //현재 컨트롤러 클래스 내부 모든 메서드 공통 경로
@@ -31,10 +31,15 @@ public class BbsController {
 	@Autowired
 	private BbsService bbsService;
 
-	
+
 	@RequestMapping(value = "list.do",method = RequestMethod.GET)
-	public String list(Model model){
-		List<BbsVo> list = bbsService.selectBbsList();
+	public String list(Model model, SearchInfo info){
+		int cnt = bbsService.selectBbsCount(info); //전체 레코드 수 조회
+		info.setTotalRecordCount(cnt);  //전체 레코드 수 정보 설정
+		info.makePageHtml(); //페이지 처리에 필요한 값들 계산
+		
+		
+		List<BbsVo> list = bbsService.selectBbsList(info);
 		model.addAttribute("bbsList", list);
 		return "bbs/bbsList";
 	}

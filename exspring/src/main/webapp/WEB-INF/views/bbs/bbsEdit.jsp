@@ -4,19 +4,25 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
     
-		<!DOCTYPE html>    
+	<!--<!DOCTYPE html>    
 		<html>             
 		<head>             
-		<meta charset='UTF-8'>
-		<jsp:include page="/WEB-INF/views/menu.jsp"/>     		
+		<meta charset='UTF-8'> -->
+		<%-- <jsp:include page="/WEB-INF/views/menu.jsp"/>  --%> 
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 		<title>게시판</title>
 		</head>             
 		<body>             
 		<h1> 게시글정보변경 </h1>
 		<form action='${pageContext.request.contextPath}/bbs/edit.do' method='post'>  
 		<input type="hidden" name='bbsNo' value="${bbsMvo.bbsNo}"/><br> 
-		제목:<input type='text' name='bbsTitle' value='<c:out value="${bbsMvo.bbsTitle}"/>'/><br>        
-		내용:<textarea name='bbsContent' cols="22" rows="5"><c:out value="${bbsMvo.bbsContent}"/></textarea><br>        
+		<%-- <c:set value="${bbsMvo.bbsWriter==loginUser.memId}" var="isMine"/> --%>
+		<%-- <c:set value="${pageContext.request.contextPath}" var="contextPath"/> --%>
+		제목:<input <c:if test= "${bbsMvo.bbsWriter!=loginUser.memId}">readonly</c:if> type='text' name='bbsTitle' value='<c:out value="${bbsMvo.bbsTitle}"/>'/><br>        
+		
+		내용:<textarea ${bbsMvo.bbsWriter!=loginUser.memId?'readonly':''} name='bbsContent' cols="22" rows="5"><c:out value="${bbsMvo.bbsContent}" /></textarea><br>        
+		
 		작성자:<c:out value="${bbsMvo.bbsWriter}"/><br>        
 		등록일:<fmt:formatDate value="${bbsMvo.bbsRegDate}" pattern="yyyy-MM-dd HH:mm:ss"/><br>  
 		
@@ -25,9 +31,9 @@
 			첨부파일: <a href="${pageContext.request.contextPath}/bbs/down.do?attNo=${vo.attNo}"><c:out value= "${vo.attOrgName}"/></a><br>
 		</c:forEach>
 		<c:if test= "${bbsMvo.bbsWriter == loginUser.memId}">
-			<input type='submit' value="저장"/>                                       
+			<input class="btn btn-outline-succes" type='submit' value="저장"/>                                       
 			<a id="delLink" href="${pageContext.request.contextPath}/bbs/del.do?bbsNo=${bbsMvo.bbsNo}">
-			<button type='button'>삭제</button></a>    
+			<button type='button' class="btn btn-outline-danger">삭제</button></a>    
 		</c:if>
 	
 		
@@ -42,7 +48,7 @@
 		<form id="replyForm" action="${pageContext.request.contextPath}/reply/add.do" method="post">
 			<input type="hidden" name="repBbsNo" value="${bbsMvo.bbsNo}"/><br>
 			<textarea name='repContent' cols="30" rows="5" placeholder="메시지를 입력하세요"></textarea>
-			<input id="repSaveBtn" type="button" value="저장" />		
+			<input  class="btn btn-outline-succes" id="repSaveBtn" type="button" value="저장" />		
 		</form>
 		</div>               
 		
@@ -53,11 +59,11 @@
 			<div class= "repContent"></div>
 			<div class= "repWriter"></div>
 			<div class= "repRegDate"></div>
-			<input type="button" value="삭제" class="delBtn" data-no=""/>
+			<input type="button" value="삭제" class="btn btn-outline-danger delBtn" data-no="" />
 			<hr>
 		</template>
-		             
-        <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.0.min.js"></script>        
+           
+         
         <script type="text/javascript">
         	$('#delLink').on('click', function(ev){
         		var ok = confirm('삭제하시면 복구할수 없습니다. \n정말로 삭제하시겠습니까??');
@@ -187,5 +193,5 @@ function refreshReplyList(){
 		});
 	});
 </script>
-</body>
-</html>
+<!-- </body>
+</html> -->

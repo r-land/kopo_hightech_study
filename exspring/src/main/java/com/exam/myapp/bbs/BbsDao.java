@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BbsDao {
 
-	List<BbsVo> selectBbsList();
+	List<BbsVo> selectBbsList(SearchInfo info);
 
 	int insertBbs(BbsVo vo);
 
@@ -17,6 +17,8 @@ public interface BbsDao {
 	BbsVo selectBbs(int memId);
 	
 	int updateBbs(BbsVo vo);
+
+	int selectBbsCount(SearchInfo info);
 
 
 }

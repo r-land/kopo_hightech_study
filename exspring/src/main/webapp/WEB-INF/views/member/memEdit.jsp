@@ -3,14 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     
-		<!DOCTYPE html>    
-		<html>             
-		<head>             
-		<meta charset='UTF-8'>
-		<jsp:include page="/WEB-INF/views/menu.jsp"/>     		
-		<title>회원관리</title>
-		</head>             
-		<body>             
+		
+		<%-- <jsp:include page="/WEB-INF/views/menu.jsp"/>    --%>  		
+            
 		<h1> 회원정보변경 </h1>
 		<form action='${pageContext.request.contextPath}/member/edit.do' method='post'>  
 		아이디 :<input type='text' name='memId' value='<c:out value="${mvo.memId}"/>' readonly/><br> 
@@ -29,6 +24,4 @@
 
 		</form>    
 		                                                  
-                               
-		</body>    
-		</html>    
+    

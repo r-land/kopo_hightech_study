@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<!DOCTYPE html>     
+<!-- <!DOCTYPE html>     
 <html>              
 <head>              
 <meta charset='UTF-8'> 
 <title>회원관리</title>
 </head>            
-<body>
-<jsp:include page="/WEB-INF/views/menu.jsp"/>     
+<body> -->
+<%-- <jsp:include page="/WEB-INF/views/menu.jsp"/>    --%>  
 <h1>회원목록 </h1>
 <a href='<c:url value="/member/add.do"/>' style="text-decoration:none">회원추가[o] </a>
 <a href='<%=request.getContextPath()%>/member/delform.do' style="text-decoration:none">회원삭제[x] </a>
@@ -34,5 +34,5 @@
 	</p>
 </c:forEach>
 
-</body>           
-</html>           
+<!-- </body>           
+</html>   -->         

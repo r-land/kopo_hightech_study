@@ -31,8 +31,8 @@ public class BbsServiceImpl implements BbsService{
 	}
 
 	@Override
-	public List<BbsVo> selectBbsList() {
-		return bbsDao.selectBbsList();
+	public List<BbsVo> selectBbsList(SearchInfo info) {
+		return bbsDao.selectBbsList(info);
 	
 	}
 
@@ -112,6 +112,13 @@ public class BbsServiceImpl implements BbsService{
 	public File getAttachFile(AttachVo vo) {
 		return new File(uploadPath, vo.getAttNewName());
 	}
+
+	@Override
+	public int selectBbsCount(SearchInfo info) {
+		return bbsDao.selectBbsCount(info);
+	}
+
+
 
 
 	}
