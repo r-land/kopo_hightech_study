@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function(){
+            $("#wrap p:hidden").css({
+              "display":"block",
+              "background-color":"greenyellow"
+            });
+          
+            var b1=$("#box1 :selected").val();
+            console.log(b1);
+          
+            var b2=$("#box2 :checked").val();
+            console.log(b2);
+          
+            var b3=$("#box3 :checked").val();
+            console.log(b3);
+              
+          });
+
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <p>제이쿼리 선택자1</p>
+        <p style="display:none">제이쿼리 선택자2</p>
+        <p>제이쿼리 선택자3</p>
+      </div>
+      <form action="#">
+        <p id="box1">
+          <select name="course" id="course">
+            <option value="opt1">옵션1</option>
+            <option value="opt2" selected>옵션2</option>
+            <option value="opt3">옵션3</option>
+          </select>
+        </p>
+        <p id="box2">
+          <input type="checkbox" name="color1" value="red">빨강
+          <input type="checkbox" name="color2" value="blue">파랑
+          <input type="checkbox" name="color3" value="green" checked>초록
+        </p>
+        <p id="box3">
+          <input type="radio" name="gender" value="male">남성
+          <input type="radio" name="gender" value="female" checked>여성
+        </p>
+      </form>
+</body>
+</html>

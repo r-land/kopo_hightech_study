@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function(){
+            $("#inner_1 p:contains(contains)")
+            .css({"background-color":"powderblue"});
+          
+            $("#inner_1 p:has(strong)")
+            .css({"background-color":"midnightblue"});
+          
+            $("#wrap").contents()
+            .css({"border":"1px solid cadetblue"});
+          
+            $("#inner_2 p").not(":first")
+            .css({"background-color":"lightgreen"});
+          
+            $("#inner_2 p").eq(2).end()
+            .css({"color":"red"});
+          });
+
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <h1>콘텐츠 탐색 선택자</h1>
+        <section id="inner_1">
+          <h1>contains(), contents(), has()</h1>
+          <p>
+            <span>contains</span>
+          </p>
+          <p>
+            <strong>contents</strong>
+          </p>
+          <p>
+            <span>has</span>
+          </p>
+        </section>
+        <section id="inner_2">
+          <h1>not(). end()</h1>
+          <p>not()</p>
+          <p>end()</p>
+          <p>선택자 끝</p>
+        </section>
+      </div>
+</body>
+</html>
