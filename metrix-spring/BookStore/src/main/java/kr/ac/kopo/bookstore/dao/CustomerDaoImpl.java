@@ -31,7 +31,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public Customer item(Long custid) {
+	public Customer item(String custid) {
 		return sql.selectOne("customer.item", custid);
 	}
 
@@ -42,7 +42,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public void delete(Long custid) {
+	public void delete(String custid) {
 		sql.delete("customer.delete", custid);
 	}
 

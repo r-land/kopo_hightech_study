@@ -7,10 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8"> 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>폴리북스</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
 	<div class="container">
@@ -24,7 +21,7 @@
 					<div class="col">
 						<select name="search" class="form-select form-select-sm">
 							<option value="0">검색항목을 선택하세요</option>
-							<option value="1" ${pager.search == 1 ? "selected" : "" }>고객번호</option>
+							<option value="1" ${pager.search == 1 ? "selected" : "" }>아이디</option>
 							<option value="2" ${pager.search == 2 ? "selected" : "" }>고객명</option>
 							<option value="3" ${pager.search == 3 ? "selected" : "" }>주소</option>						
 							<option value="4" ${pager.search == 4 ? "selected" : "" }>전화번호</option>						
@@ -43,7 +40,8 @@
 			<table border="1" class="table table-striped table-hover">
 				<thead class="table-dark">
 					<tr>
-						<th>고객번호</th>
+						<th>아이디</th>
+						<th>비밀번호</th>
 						<th>고객명</th>
 						<th>주소</th>
 						<th>전화번호</th>
@@ -54,6 +52,7 @@
 					<c:forEach var="item" items="${list}">
 					<tr>
 						<td>${item.custid}</td>
+						<td>${item.passwd}</td>
 						<td>${item.name}</td>
 						<td>${item.address}</td>
 						<td>${item.phone}</td>
@@ -88,7 +87,7 @@
 		</div>
 		<div class="mb-5">
 			<a href="add" class="btn btn-primary btn-sm">등록</a>
-			<a href=".." class="btn btn-secondary btn-sm">이전</a>
+			<a href=".." class="btn btn-secondary btn-sm">홈</a>
 		</div>
 	</div>
 </body>

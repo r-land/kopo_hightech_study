@@ -4,12 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>폴리북스</title>
+<jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
 	<div>
 		<div>
 			<h1>폴리북스</h1>
+		</div>
+		<div>
+			<a href="signup">회원가입</a>
 		</div>
 		<div>
 			<ul>

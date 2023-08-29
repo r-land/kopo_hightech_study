@@ -1,16 +1,23 @@
 package kr.ac.kopo.bookstore.model;
 
 public class Customer {
-	private Long custid;
+	private String custid;
+	private String passwd;
 	private String name;
 	private String address;
 	private String phone;
 	
-	public Long getCustid() {
+	public String getCustid() {
 		return custid;
 	}
-	public void setCustid(Long custid) {
+	public void setCustid(String custid) {
 		this.custid = custid;
+	}
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 	public String getName() {
 		return name;
@@ -29,7 +36,8 @@ public class Customer {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-		
 	}
+	
+	
 
 }

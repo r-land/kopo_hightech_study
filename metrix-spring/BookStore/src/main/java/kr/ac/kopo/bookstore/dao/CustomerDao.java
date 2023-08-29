@@ -13,10 +13,10 @@ public interface CustomerDao {
 
 	void add(Customer item);
 
-	Customer item(Long custid);
+	Customer item(String custid);
 
 	void update(Customer item);
 
-	void delete(Long custid);
+	void delete(String custid);
 
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Book</title>
+<jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
 	<div>

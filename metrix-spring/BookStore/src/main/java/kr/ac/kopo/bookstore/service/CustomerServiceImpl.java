@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer item(Long custid) {
+	public Customer item(String custid) {
 		return dao.item(custid);
 	}
 
@@ -39,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public void delete(Long custid) {
+	public void delete(String custid) {
 		dao.delete(custid);
 	}
 

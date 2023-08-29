@@ -48,12 +48,12 @@
 	 
 	 <insert id="add">
 	 	INSERT INTO customer
-	 	VALUES (SEQ_CUST.nextval, #{name}, #{address}, #{phone})
+	 	VALUES (#{custid}, #{passwd}, #{name}, #{address}, #{phone})
 	 </insert>
 	 
 	 <update id="update">
 	 	UPDATE customer
-	 	SET name=#{name}, address=#{address}, phone=#{phone}
+	 	SET passwd=#{passwd}, name=#{name}, address=#{address}, phone=#{phone}
 	 	WHERE custid=#{custid}
 	 </update>
 	 

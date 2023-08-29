@@ -4,24 +4,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="../header.jsp"></jsp:include>
-<script src="/resources/js/password_check_jquery.js"></script>
+<jsp:include page="header.jsp"></jsp:include>
+<script src="/resources/js/password_check.js"></script>
+<script src="/resources/js/check_id.js"></script>
 </head>
 <body>
 	<div class="container">
 		<div>
-			<h3>고객등록</h3>
+			<h3>회원가입</h3>
 		</div>
 		<form method="post">
 		<div>
 			<div class="form-group">
 				<label>아이디:</label>
 				<input type="text" name="custid">
+				<button type="button" id="check_id">[비동기]중복확인</button>
+				<button type="button" id="check_id_sync">[동기]중복확인</button>
 			</div>
 			<div>
 				<label>비밀번호:</label>
 				<input type="password" name="passwd">
-				<button type="button" class="password_check" data-for="passwd">확인</button>
+				<button type="button" class="password_check" data-msg="Hello1" data-for="passwd">확인</button>
+			</div>
+			<div>
+				<label>비밀번호 확인:</label>
+				<input type="password" name="passwd_confirm">
+				<button type="button" class="password_check" data-msg="Hello2" data-for="passwd_confirm">확인</button>
 			</div>
 			<div>
 				<label>고객명:</label>
@@ -39,7 +47,7 @@
 			
 			<div>
 				<button>등록</button>
-				<a href="list"><button type ="button">목록</button></a>
+				<a href="/"><button type ="button">처음으로</button></a>
 			</div>
 		</div>
 		</form>

@@ -45,7 +45,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/update/{custid}")
-	String update(@PathVariable Long custid, Model model) {
+	String update(@PathVariable String custid, Model model) {
 		Customer item = service.item(custid);
 		
 		model.addAttribute("item", item);
@@ -54,7 +54,7 @@ public class CustomerController {
 	}
 
 	@PostMapping("/update/{custid}")
-	String update(@PathVariable Long custid, Customer item) {
+	String update(@PathVariable String custid, Customer item) {
 		item.setCustid(custid);
 		
 		service.update(item);
@@ -63,7 +63,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/delete/{custid}")
-	String delete(@PathVariable Long custid) {
+	String delete(@PathVariable String custid) {
 		service.delete(custid);
 		
 		return "redirect:../list";
