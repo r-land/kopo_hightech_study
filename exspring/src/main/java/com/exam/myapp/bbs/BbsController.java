@@ -32,7 +32,8 @@ public class BbsController {
 	private BbsService bbsService;
 
 
-	@RequestMapping(value = "list.do",method = RequestMethod.GET)
+	@GetMapping("list.do")
+	//@RequestMapping(value = "list.do",method = RequestMethod.GET)
 	public String list(Model model, SearchInfo info){
 		int cnt = bbsService.selectBbsCount(info); //전체 레코드 수 조회
 		info.setTotalRecordCount(cnt);  //전체 레코드 수 정보 설정

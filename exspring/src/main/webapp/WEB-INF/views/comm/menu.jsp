@@ -6,7 +6,7 @@
 <c:if test="${loginUser!=null}">
 접속계정 :<c:out value="${loginUser.memName}"/>
 <a href='<c:url value="/member/logout.do"/>' style="text-decoration:none">로그아웃[out] </a></c:if> |
-<a href='${pageContext.request.contextPath}/member/logout.do' style="text-decoration:none">회원관리 </a> |
+<a href='${pageContext.request.contextPath}/member/list.do' style="text-decoration:none">회원관리 </a> |
 <a href='${pageContext.request.contextPath}/bbs/list.do' style="text-decoration:none">게시판 </a> |
 
 <!-- 로그인이 되지 않은 경우 -->

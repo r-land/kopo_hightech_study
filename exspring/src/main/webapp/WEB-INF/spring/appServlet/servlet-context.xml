@@ -76,6 +76,12 @@
 	<!--아래 같은 경우@Value("C:/Temp/upload") 아님 ${bbs.upload.path} 이렇게 쓰고 *. 이하 프로퍼티 파일읽어옴  -->
 	<context:property-placeholder location="classpath:config/*.properties"/>
 	
+	<!-- 스프링  애플리케이션에서 공우하여 사용할 수 있는 메세지들을 저장하고 있는 메시지소스 등록 -->
+	<!-- 프로퍼티파일에 저장된 메시지를 읽어서 저장하는 메시지소스객체를 "messageSource" (꼭써야함) 라는 이름으로 등록 -->
+	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<beans:property name="basename" value="msg"/>
+	</beans:bean>
+	
 		<!-- 데이터베이스 입출력을 위한 객체들을 등록하는 부분 -->
 	
 	<!-- 스프링의 트랜잭션 설정 방식 -->

@@ -1,5 +1,7 @@
 package com.exam.myapp.bbs;
 
+import java.util.Iterator;
+
 public class PageInfo {
 
 	private int currentPageNo = 1;	 		//현재 페이지 번호	
@@ -13,6 +15,7 @@ public class PageInfo {
 	private int firstRecordIndex;		//페이징 SQL의 조건절에 사용되는 시작 rownum		
 	private int lastRecordIndex;		//페이징 SQL의 조건절에 사용되는 마지막 rownum		
 	
+	private String pageHtml = "";
 	
 	public void makePageHtml() {
 		totalPageCount = ((totalRecordCount-1)/recordCountPerPage) + 1;
@@ -23,6 +26,25 @@ public class PageInfo {
 		}
 		firstRecordIndex = (currentPageNo - 1) * recordCountPerPage;
 		lastRecordIndex = currentPageNo * recordCountPerPage;
+		
+		pageHtml += "<a href=\"#\" onclick=\"goPage(1); return false;\">[처음]</a> &#160;";
+		pageHtml += "<a href=\"#\" onclick=\"goPage(" + (currentPageNo - 1) + "); return false;\">[이전]</a> &#160;";
+		for (int i = firstPageNoOnPageList; i <= lastPageNoOnPageList; i++) {
+			if (i == currentPageNo) { 
+				pageHtml += "<strong>{" + i + "}</strong> &#160;";
+			} else { 
+				pageHtml += "<a href=\"#\" onclick=\"goPage(" + i + "); return false;\">{" + i + "}</a> &#160;"; 
+			} 
+		}
+		pageHtml += "<a href=\"#\" onclick=\"goPage(" + (currentPageNo + 1) + "); return false;\">[다음]</a> &#160;";
+		pageHtml += "<a href=\"#\" onclick=\"goPage(" + totalPageCount + "); return false;\">[마지막]</a> &#160;"; 
+		pageHtml += "<script> function goPage(n) { location.href = location.pathname + '?currentPageNo=' + n; } </script>"; }
+	
+	public String getPageHtml() {
+		return pageHtml;
+	}
+	public void setpageHtml(String pageHtml) {
+		this.pageHtml = pageHtml;
 	}
 	
 	public int getCurrentPageNo() {
