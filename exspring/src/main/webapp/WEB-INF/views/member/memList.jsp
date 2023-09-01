@@ -12,9 +12,9 @@
 <body> -->
 <%-- <jsp:include page="/WEB-INF/views/menu.jsp"/>    --%>  
 <h1>회원목록 </h1>
-<div class="mb-5">
-<a href='<c:url value="/member/add.do"/>' style="text-decoration:none" class="btn btn-warning btn-sm">회원추가[o] </a>
-<a href='<%=request.getContextPath()%>/member/delform.do' style="text-decoration:none" class="btn btn-danger btn-sm">회원삭제[x] </a>
+<div class="mb-3">
+<a href='<c:url value="/member/add.do"/>' style="text-decoration:none" class="btn btn-outline-success btn-sm">회원추가[o] </a>
+<a href='<%=request.getContextPath()%>/member/delform.do' style="text-decoration:none" class="btn btn-outline-danger btn-sm">회원삭제[x] </a>
 </div>
 <table border="1" class="table table-striped table-hover">
 <thead class="table-dark">

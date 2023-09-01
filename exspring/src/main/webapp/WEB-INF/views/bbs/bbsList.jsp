@@ -4,37 +4,45 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 
-<!-- <!DOCTYPE html>     
+<!DOCTYPE html>     
 <html>              
 <head>              
-<meta charset='UTF-8'> ㄴ
+<meta charset='UTF-8'> 
 <title>게시판</title>
 </head>            
-<body> -->
+<body>
 <%-- <jsp:include page="/WEB-INF/views/menu.jsp"/>   --%>   
 <h1>게시글목록 </h1>
-<div style=" text-align: left;">
-	
-	<form id="searchForm" action="${pageContext.request.contextPath}/bbs/list.do">
-		<select name="searchType">
-			<%-- <option value="title" ${searchInfo.searchType=='title'?'selected':''}>제목</option>
-			<option value="content" ${searchInfo.searchType=='content'?'selected':''}>내용</option>
-			<option value="total" ${searchInfo.searchType=='total'?'selected':''}>제목+내용</option> --%>
-			<option value="title">제목</option>
-			<option value="content" >내용</option>
-			<option value="total" >제목+내용</option>
-		</select>
-		<script type="text/javascript">
-		//	document.querySelector('[name="searchType"]').value = "${searchInfo.searchType}";
-			if('${searchInfo.searchType}'){
-		$('[name="searchType"]').val('${searchInfo.searchType}');	
-			}
-		</script>
-		<input type="text" name="searchWord" value="${searchInfo.searchWord}"/>
-		<input type="hidden" name="currentPageNo" value="1"/>
-		<input type="submit" value="검색" />	
-	</form>
+<div class="row mb-2">
+<nav class="navbar navbar-light bg-light">
+	<div class="col">
+		<a href="${pageContext.request.contextPath}/bbs/add.do" style="text-decoration:none"> 
+		<button type='button' class="btn btn-secondary">글쓰기</button></a>
+	</div>
+	<div class="container-fluid col-5" >
+		<form class="d-flex" id="searchForm" action="${pageContext.request.contextPath}/bbs/list.do">
+			<select name="searchType">
+				<%-- <option value="title" ${searchInfo.searchType=='title'?'selected':''}>제목</option>
+				<option value="content" ${searchInfo.searchType=='content'?'selected':''}>내용</option>
+				<option value="total" ${searchInfo.searchType=='total'?'selected':''}>제목+내용</option> --%>
+				<option value="title">제목</option>
+				<option value="content" >내용</option>
+				<option value="total" >제목+내용</option>
+			</select>
+			<script type="text/javascript">
+			//	document.querySelector('[name="searchType"]').value = "${searchInfo.searchType}";
+				if('${searchInfo.searchType}'){
+			$('[name="searchType"]').val('${searchInfo.searchType}');	
+				}
+			</script>
+			<input class="form-control me-2 col-2" placeholder="search" type="text" name="searchWord" value="${searchInfo.searchWord}"/>
+			<input type="hidden" name="currentPageNo" value="1"/>
+			<input type="submit" value="검색" />	
+		</form>
+	</div>
+</nav>
 </div>
+
 <table border="1" class="table table-striped table-hover">
 <thead class="table-dark">
 		<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일시</th></tr>
@@ -61,9 +69,7 @@
 
 	</tbody>
 </table>
-	<div><a href="${pageContext.request.contextPath}/bbs/add.do" style="text-decoration:none"> 
-	<button type='button' class="btn btn-success">글쓰기</button></a></div>
-<div class="pagination">
+<div align="center">
 ${searchInfo.pageHtml}
 </div>
 <script>
