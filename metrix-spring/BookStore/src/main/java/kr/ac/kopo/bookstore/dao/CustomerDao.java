@@ -19,4 +19,6 @@ public interface CustomerDao {
 
 	void delete(String custid);
 
+	Customer login(Customer item);
+
 }

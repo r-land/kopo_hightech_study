@@ -23,6 +23,16 @@
 	
 	<context:component-scan base-package="kr.ac.kopo" />
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/book/**"/>
+			<mapping path="/customer/**"/>
+			
+			<exclude-mapping path="/book/list"/>
+			
+			<beans:bean class="kr.ac.kopo.bookstore.interceptor.AdminInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
 	
 	
 </beans:beans>

@@ -17,4 +17,6 @@ public interface CustomerService {
 
 	void delete(String custid);
 
+	Boolean login(Customer item);
+
 }

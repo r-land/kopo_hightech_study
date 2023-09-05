@@ -61,4 +61,9 @@
 	 	DELETE FROM customer
 	 	WHERE custid=#{custid}
 	 </delete>
+	 
+	 	 <select id="login" resultType="Customer">
+	 	SELECT * FROM customer
+	 	WHERE custid=#{custid} AND passwd =#{passwd}
+	 </select>
 </mapper>
