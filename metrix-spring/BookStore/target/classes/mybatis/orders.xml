@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="orders">
+	<sql id="search">
+		SELECT * FROM orders
+		<where>
+			<if test="search == 1">
+				orderid=#{keyword}
+			</if>
+			
+			<if test="search == 2">
+				custid LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+			</if> 
+		</where>
+		ORDER BY orderid
+	</sql>
+	<select id="total" resultType="Integer">
+	 	SELECT COUNT(*) FROM  (<include refid="search"></include>)
+	 </select>
+
+
+	 <select id="list" resultType="Orders">
+	 	SELECT * FROM
+			(SELECT sub.*, ROWNUM rnum FROM 
+			  (<include refid="search"></include>) sub)
+			  
+		<if test="perPage != 0">
+			<![CDATA[
+			WHERE rnum > ((#{page} -1) * #{perPage}) AND rnum <= (#{page} * #{perPage})
+			]]>
+		</if>
+	 </select>
+	 
+	 <insert id="add">
+	 	INSERT INTO orders
+	 	VALUES (SEQ_ORDER.nextval, #{custid}, #{saleprice}, SYSDATE)
+	 	
+	 	<selectKey keyProperty="orderid" resultType="Long" order="AFTER">
+	 		SELECT SEQ_ORDER.currval FROM dual
+	 	</selectKey>
+	 </insert>
+	 
+	 <insert id="add_detail">
+		 INSERT INTO detail
+	 	VALUES (SEQ_DETAIL.nextval, #{bookid}, #{orderid}, #{amount})
+	 </insert>
+
+</mapper>

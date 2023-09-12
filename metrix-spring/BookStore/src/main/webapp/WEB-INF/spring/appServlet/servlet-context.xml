@@ -29,6 +29,7 @@
 			<mapping path="/customer/**"/>
 			
 			<exclude-mapping path="/book/list"/>
+			<exclude-mapping path="/book/add_cart/**"/>
 			
 			<beans:bean class="kr.ac.kopo.bookstore.interceptor.AdminInterceptor"></beans:bean>
 		</interceptor>

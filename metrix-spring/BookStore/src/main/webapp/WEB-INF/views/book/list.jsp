@@ -8,12 +8,16 @@
 <head>
 <meta charset="UTF-8"> 
 <jsp:include page="../header.jsp"></jsp:include>
+<script src="/resources/js/cart.js"></script>
 </head>
 <body>
-	<div class="container">
+		<div class="container">
 		<div>
-			<h3>도서 목록</h3>
+			<h1>폴리북스</h1>
 		</div>
+		<nav>
+			<jsp:include page="../nav.jsp"></jsp:include>
+		</nav>
 		<div>
 			<form>
 				<div class="row mb-2">
@@ -48,12 +52,16 @@
 				</thead>
 				<tbody>
 					<c:forEach var="item" items="${list}">
-					<tr>
+					<tr data-bookid="${item.bookid}">
 						<td>${item.bookid}</td>
 						<td>${item.bookname}</td>
 						<td>${item.publisher}</td>
 						<td>${item.price}</td>
-						<td><a href="delete/${item.bookid}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a> <a href="update/${item.bookid}" class="btn btn-warning btn-sm"><i class="bi bi-cart-plus"></i></a></td>
+						<td>
+							<a href="delete/${item.bookid}" class="btn btn-secondary"><i class="bi bi-trash3"></i></a> 
+							<a href="update/${item.bookid}" class="btn btn-outline-secondary"><i class="bi bi-pencil-fill"></i></a>
+							<button class="btn btn-sm btn-primary cart"><i class="bi bi-basket2"></i></button>
+						</td>
 					</tr>
 					</c:forEach>
 					

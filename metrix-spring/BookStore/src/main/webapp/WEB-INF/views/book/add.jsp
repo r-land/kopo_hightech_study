@@ -7,7 +7,13 @@
 <jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
-	<div>
+		<div class="container">
+		<div>
+			<h1>폴리북스</h1>
+		</div>
+		<nav>
+			<jsp:include page="../nav.jsp"></jsp:include>
+		</nav>
 		<div>
 			<h3>도서 등록</h3>
 		</div>

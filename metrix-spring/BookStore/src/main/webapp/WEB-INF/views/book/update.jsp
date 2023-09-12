@@ -8,7 +8,13 @@
 <jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
-	<div>
+		<div class="container">
+		<div>
+			<h1>폴리북스</h1>
+		</div>
+		<nav>
+			<jsp:include page="../nav.jsp"></jsp:include>
+		</nav>
 		<div>
 			<h3>도서정보변경</h3>
 		</div>
@@ -36,7 +42,7 @@
 			
 			<div>
 				<button>등록</button>
-				<a href="list"><button type ="button">목록</button></a>
+				<a href="../list"><button type ="button">목록</button></a>
 			</div>
 		</div>
 		</form>

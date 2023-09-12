@@ -5,11 +5,14 @@
 	<typeAliases>
 		<typeAlias type="kr.ac.kopo.bookstore.model.Book" alias="Book"/>
 		<typeAlias type="kr.ac.kopo.bookstore.model.Customer" alias="Customer"/>
+		<typeAlias type="kr.ac.kopo.bookstore.model.Orders" alias="Orders"/>
+		<typeAlias type="kr.ac.kopo.bookstore.model.Detail" alias="Detail"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mybatis/book.xml"/>
 		<mapper resource="mybatis/customer.xml"/>
+		<mapper resource="mybatis/orders.xml"/>
 	</mappers>
 
 </configuration>

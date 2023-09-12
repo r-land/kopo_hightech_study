@@ -19,6 +19,11 @@ public class RootController {
 	@Autowired
 	CustomerService customerService;
 	
+	@GetMapping("/cart")
+	String cart() {
+		return "cart";
+	}
+	
 	@GetMapping("/")
 	String index(HttpSession session, Model model) {
 		String msg = (String) session.getAttribute("msg");

@@ -17,21 +17,9 @@
 		<div>
 			<h1>폴리북스</h1>
 		</div>
-		<c:if test="${sessionScope.member == null}">
-			<div>
-				<a href="login">로그인<i class="bi bi-box-arrow-in-right"></i></a>
-				<a href="signup">회원가입</a>
-			</div>
-		</c:if>
-		
-		<c:if test="${sessionScope.member != null}">
-			<div>
-				${sessionScope.member.name} 님 환영합니다!
-			</div>
-			<div>
-				<a href="logout">로그아웃<i class="bi bi-box-arrow-in-left"></i></a>
-			</div>
-		</c:if>
+		<nav>
+			<jsp:include page="nav.jsp"></jsp:include>
+		</nav>
 		<div>
 			<ul>
 				<li><a href="book/list">도서관리</a></li>
