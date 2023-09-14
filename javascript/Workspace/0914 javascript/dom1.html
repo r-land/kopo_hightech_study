@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#Js DOM을 알아보자#</title>
+    <style>
+        .drink {
+            background-color: palevioletred;
+        }
+        .good {
+            border: 3px solid rgb(233, 52, 24);
+        }
+        li{
+             list-style-type : none 
+        }
+
+    </style>
+</head>
+<body>
+    <br>
+    <a href="./core.html" id="my" data-price="100" class="foo bar" style="color:rgb(46, 37, 23); background-color: pink; font-size: xx-large;">이동 →</a>
+    <ul>
+        <li id="item1" class="drink">커피</li>
+        <li id="item2" class="drink good">녹차</li>
+        <li id="item3" class="drink">홍차</li>
+    </ul>
+    <br><br>
+    <input type="checkbox" name="fruit" id="cb1" value="sberry">
+    <label for="cb1">딸기</label>
+   
+    <input type="checkbox" name="fruit" id="cb2" value="wmelon" checked="checked">
+    <label for="cb2">수박</label>
+   
+    <input type="checkbox" name="fruit" id="cb3" value="citrus" checked="checked">
+    <label for="cb3">귤</label>
+    <br><br><br>
+   <div id="box" style="width: 200px; height: 200px;background-color: salmon;">빈상자</div>
+   
+   <!-- //녹차에서 good 클래스 제거하고 홍차에서 good 클래스 추가
+
+   //귤 선택(체크) 해제 하고, 딸기 선택(체크)
+   
+   //name="fruit" 모든 체크박스들에 대해서 value, label, 선택여부를 콘솔에 출력
+   //sberry 딸기 선택
+   //wmelon 수박 선택
+   //citrus 귤 미선택
+   
+   //ID =" BOX" 인 엘리먼트의 크기를 너비 300px 높이 100px 로 변경하고 배경색도 변경 -->
+   
+   <script>
+       var target = document.getElementById("box"); //대상 요소를 ID로 지정 
+         target.style.backgroundColor = "yellowgreen";
+         target.style.width = "300px";
+         target.style.height = "100px";
+
+       let gt = document.querySelector("#item2");
+       gt.classList.remove('good'); 
+       let bt = document.querySelector("#item3");
+       bt.classList.add('good'); 
+       
+       const element = document.querySelector('#cb3');
+       element.checked = false;  //checked, selected,disabled,readonly 등은 property값이 boolean
+
+       const el = document.querySelector('#cb1');
+       el.checked = true;
+
+       let cbList = document.querySelectorAll('[name="fruit"]');       
+       for(let i = 0; i < cbList.length; i++){
+            const cb = cbList[i];
+            let lab = document.querySelector('label[for="'+cb.id+'"]');
+         //   console.log(lab.htmlFor, lab.getAttribute('for'));
+                                 
+            console.log(cb.value, lab.innerHTML, lab.textContent, cb.checked?'선택':'미선택');
+       }
+
+
+
+        let aElm = window.document.getElementsByTagName('a')[0];
+        let qSel = window.document.querySelector('a');
+        let qSelA = window.document.querySelectorAll('a')[0];
+        let link = window.document.links[0];
+
+        console.log(aElm);
+        console.log(qSel);
+        console.log(qSelA);
+        console.log(link);  //a tag 호출
+
+        console.log(aElm.getAttribute('href')); //href attribute
+        console.log(aElm.href); //href property
+
+        console.log(aElm.getAttribute('id')); //attribute
+        console.log(aElm.querySelector('#id')); //attribute
+        console.log(aElm.id); //property
+
+        console.log(aElm.getAttribute('class')); //attribute
+        console.log(aElm.className); //property
+        console.log(aElm.classList); //property
+        
+        console.log(aElm.getAttribute('style')); //css attribute 문자열로 출력되므로 조작하기 어려움
+        console.log(aElm.style.color); //css property 객체화된 요소는 조작하기 쉬움
+        console.log(aElm.style.backgroundColor); //property 속성명 낙타표기법
+
+        console.log(aElm.getAttribute('data-price')); //data - attribute
+        console.log(aElm.dataset.price); //data- property 사용은 dataset으로 접근함
+       
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoM 정복</title>
+</head>
+<body>
+    <img src="./img/dom.png" width="200">
+    <img src="./img/images.png">
+    <h1 id="t01">제목01</h1>
+    <h1 id="t02" class="main">제목02</h1>
+    <h1 id="t03">제목03</h1>
+    <div id="mydiv">
+        <h1>제목11</h1>
+        <h1 class="main">제목12</h1>
+        <h1>제목13</h1>
+    </div>
+
+    <input type="checkbox" name="a">
+    <input type="checkbox" name="a">
+    <input type="checkbox" name="b">
+    <input type="checkbox" name="b">
+
+    <script>
+        //window 객체는 브라우저 상에서 실행되는 자바스크립트의 전역객체로
+        //window 객체의 속성ㅇ르 사용할 떄, 'window.속성명' 대신 '속성명'만 사용 가능
+      
+
+        //id 속성값이 't01' 인 엘리먼트의 내용을 '첫번째 제목' 으로 변경
+        var ch1 = document.getElementById('t01').innerHTML="첫번째 제목";
+        //태그이름이 'h1' 인 엘리먼트의 내용을 '같은 제목' 으로 변경
+        var ch2 = document.getElementsByTagName('h1').textContent="같은제목";
+        var chh = document.querySelectorAll('h1')
+            for(var i = 0; i < chh.length; i++){
+                const chhh = chh[i];
+                chhh.innerHTML= '같은제목';
+        }
+        //main class 를 가진 엘리먼트의 내용을 '메인타이틀' 로 변경
+        var ch3 = document.getElementsByClassName("main")[0];
+        var mainlist = document.querySelectorAll('.main');
+        for(var i = 0; i < mainlist.length; i++){
+            const ch4 = mainlist[i];
+            ch4.innerHTML= '메인타이틀';
+    }
+        //name 속성값이 'b'값에 '새로운 값'을 출력
+        let ch5 = document.getElementsByName('b');
+        let inpList = document.querySelectorAll('[name="b"]');
+        for(var i = 0; i < inpList.length; i++){
+            const m = inpList[i];
+            m.value= '새로운값';
+        }
+        //id 속성값이 'mydiv'인 엘리먼트 내부의 'h1'인 엘리먼트들의 내용을 '내부제목'으로 변경
+         let md = document.querySelector('#mydiv');
+        h1List = md.querySelectorAll('h1');
+        //getElementsByTagName, getElementsByClassName , querySelector, querySelectorAll
+        //메서드는 document 객체 뿐만 아니라 엘리먼트 객체에서도 사용 가능 
+        //해당 엘리멘트 내부(하위)의 엘리멘트들만을 대상으로 검색
+        h1List = md.querySelectorAll('#mydiv h1');
+        for(var i = 0; i < h1List.length; i++){
+            const c = h1List[i];
+            c.innerHTML= '내부제목';
+    }
+
+
+
+
+        //css 선택자
+        // XXX : 태그 이름이 XXX인 요소 <XXX>
+        // #XXX : ID 속성값이 XXX인 요소들 <...ID ="XXX">
+        // .XXX : CLASS 속성에 XXX가 포함된 요소들 <... CLASS="...XXX....">
+        // [XXX="YYY"] : XXX 속성값이 YYY인 요소 <...XXX="YYY">
+        // [XXX] : XXX 속성이 존재하는 요소<...XXX="..."><...XXX>
+        //CSS 선택자 조합
+        //선택자1선택자2 : 선택자 1과 선택자 2 모두 만족하는 요소
+        //선택자1,선택자2 : 선택자 1를 만족하는 요소와 선택자 2를 만족하는 요소
+        //선택자1 선택자2 : 선택자 1를 만족하는 요소의 자손들 중에서 선택자 2를 만족하는 요소
+
+
+        
+
+    </script>
+</body>
+</html>
