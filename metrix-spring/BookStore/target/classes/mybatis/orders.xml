@@ -3,17 +3,18 @@
 
 <mapper namespace="orders">
 	<sql id="search">
-		SELECT * FROM orders
+		select orders.*, customer.name, customer.phone from orders
+		join customer on orders.CUSTID = customer.CUSTID
 		<where>
 			<if test="search == 1">
-				orderid=#{keyword}
+				orders.orderid=#{keyword}
 			</if>
 			
 			<if test="search == 2">
-				custid LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+				orders.custid = #{custid}
 			</if> 
 		</where>
-		ORDER BY orderid
+		ORDER BY orders.orderid
 	</sql>
 	<select id="total" resultType="Integer">
 	 	SELECT COUNT(*) FROM  (<include refid="search"></include>)
@@ -42,8 +43,24 @@
 	 </insert>
 	 
 	 <insert id="add_detail">
-		 INSERT INTO detail
+		INSERT INTO detail
+	 	(code, bookid, orderid, amount)
 	 	VALUES (SEQ_DETAIL.nextval, #{bookid}, #{orderid}, #{amount})
 	 </insert>
+	 
+	 <resultMap type="Orders" id="OrdersMap" autoMapping="true">
+	 	<id property="orderid" column="orderid"/>
+	 	
+	 	<collection property="details" column="oid" javaType="ArrayList" ofType="Detail" autoMapping="true" >
+	 		<id property="code" column="code" />
+	 	</collection>
+	 </resultMap>
+	 
+	 <select id="item" resultMap="OrdersMap">
+	 	select orders.*, detail.*, detail.ORDERID oid, book.bookname, book.PUBLISHER from orders 
+		join detail on orders.orderid=detail.ORDERID
+		join book on detail.bookid=book.bookid
+	 	where orders.orderid=#{orderid}
+	 </select>
 
 </mapper>

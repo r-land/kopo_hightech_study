@@ -12,4 +12,6 @@ public interface OrdersService {
 
 	void order(String custid, HashMap<Long, Integer> cart);
 
+	Orders item(Long orderid);
+
 }

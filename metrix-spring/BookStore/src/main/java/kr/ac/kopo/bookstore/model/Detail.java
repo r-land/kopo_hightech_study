@@ -5,6 +5,9 @@ public class Detail {
 	private Long bookid;
 	private Long orderid;
 	private Long amount;
+	
+	private String bookname;
+	private String publisher;
 
 	public Long getCode() {
 		return code;
@@ -36,6 +39,22 @@ public class Detail {
 
 	public void setAmount(Long amount) {
 		this.amount = amount;
+	}
+
+	public String getBookname() {
+		return bookname;
+	}
+
+	public void setBookname(String bookname) {
+		this.bookname = bookname;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
 	}
 
 }

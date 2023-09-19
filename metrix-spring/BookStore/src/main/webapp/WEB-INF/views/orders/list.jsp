@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +46,8 @@
 					<tr>
 						<th>주문번호</th>
 						<th>고객번호</th>
+						<th>고객명</th>
+						<th>연락처</th>
 						<th>주문금액</th>
 						<th>주문일자</th>
 						<th>관리</th>
@@ -53,10 +56,12 @@
 				<tbody>
 					<c:forEach var="item" items="${list}">
 					<tr>
-						<td>${item.orderid}</td>
+						<td><a href="detail/${item.orderid}">${item.orderid}</a></td>
 						<td>${item.custid}</td>
+						<td>${item.name}</td>
+						<td>${item.phone}</td>
 						<td>${item.saleprice}</td>
-						<td>${item.orderdate}</td>
+						<td><fmt:formatDate value="${item.orderdate}" pattern="yyyy년 MM월 dd일"/></td>
 						<td>
 							<a href="delete/${item.orderid}" class="btn btn-secondary"><i class="bi bi-trash3"></i></a> 
 						</td>
@@ -65,7 +70,7 @@
 					
 					<c:if test="${list.size() < 1}">
 						<tr>
-							<td colspan = "5"> 검색 된 주문내역이 없습니다. </td>
+							<td colspan = "7"> 검색 된 주문내역이 없습니다. </td>
 						</tr>
 					</c:if>
 				</tbody>

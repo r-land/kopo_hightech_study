@@ -27,23 +27,6 @@ public class BookController {
 	@Autowired
 	BookService service;
 	
-	@ResponseBody
-	@GetMapping("/add_cart/{bookid}")
-	String addCart(@PathVariable Long bookid, @SessionAttribute(name="cart", required=false) HashMap<Long, Integer> cart, HttpSession session) {
-		if(cart == null) {
-			cart = new HashMap<Long, Integer>();
-			session.setAttribute("cart", cart);
-		}
-		Integer amount = cart.get(bookid);
-		if(amount == null)
-			amount = 0;
-		
-		cart.put(bookid, amount + 1);
-			
-		System.out.println("장바구니 담기 :" + bookid + "," + cart.get(bookid));
-		return "OK";
-	}
-	
 	@GetMapping("/dummy")
 	String dummy() {
 		service.dummy();

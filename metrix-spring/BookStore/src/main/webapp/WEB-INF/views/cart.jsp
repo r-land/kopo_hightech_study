@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <jsp:include page="header.jsp"></jsp:include>
+<script src="/resources/js/cart.js"></script>
 </head>
 <body>
 <div class="container">
@@ -32,12 +33,12 @@
 					</tr>
 					</c:if>
 					<c:forEach var="item" items="${sessionScope.cart}">
-					<tr>
+					<tr data-bookid="${item.key}">
 						<td>${item.key}</td>
-						<td>${item.value}</td>
+						<td><input type="number" value="${item.value}"></td>
 						<td>
-						  <button class="btn btn-primary me-sm-1" >변경</button>
-						  <button class="btn btn-danger me-sm-1">삭제</button>
+						  <button class="btn btn-primary me-sm-1 cart_update" >변경</button>
+						  <button class="btn me-sm-1" style="background-color: pink;" >삭제</button>
 						</td>
 					</tr>
 					</c:forEach>
