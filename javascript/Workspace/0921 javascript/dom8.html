@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학생목록</title>
+    <script>
+        let studentList = [];
+        studentList.push({ stuNo: '20230001', stuName: '고길동', stuScore: 70 });
+        studentList.push({ stuNo: '20230002', stuName: '마이콜', stuScore: 30 });
+        studentList.push({ stuNo: '20230003', stuName: '도우너', stuScore: 50 });
+        //1.studentList 의 학생정보를 stuTable에 출력
+        //2.저장버튼을 클릭하면 stuForm에 입력한 학생정보를 
+        //  studentList에 추가 
+        //3.변경버튼을 클릭하면, 클릭한 학생 정보를 stuForm에 출력
+        //  3-1. stuForm의 학생정보를 변경하고 저장버튼을 클릭하면,
+        //      studentList에서 해당 학생정보를 변경
+        //  3-2. 삭제버튼을 클릭하면, 현재 학생정보를 studentList에서 삭제
+        //* studentList 데이터는 항상 최신 상태를 stuTable에 출력
+    </script>
+</head>
+<body>
+    <table id="stuTable">
+        <thead><tr><th>학번</th><th>이름</th><th>성적</th><th>처리</th></tr></thead>
+        <tbody>
+            <tr><td>20230001</td><td>고길동</td><td>70</td><td><button type="button">변경</button></td></tr>
+            <tr><td>20230002</td><td>마이콜</td><td>30</td><td><button type="button">변경</button></td></tr>
+            <tr><td>20230003</td><td>도우너</td><td>50</td><td><button type="button">변경</button></td></tr>
+        </tbody>
+    </table>
+    <form id="stuForm" action="">
+        학번 : <input type="text" name="stuNo" ><br>
+        이름 : <input type="text" name="stuName" ><br>
+        성적 : <input type="number" name="stuScore" ><br>
+        <input type="button" value="저장" >
+        <input type="button" value="삭제" >
+    </form>
+</body>
+</html>

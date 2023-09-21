@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <style>
+        #prod img, #cart img{ 
+            width: 100px;
+            height: 100px;
+        } 
+        div{
+            border: 2px solid blueviolet
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="prod">
+        <img src="./img/001-basketball.png" alt="농구공">
+        <img src="./img/002-football.png" alt="축구공">
+        <img src="./img/003-beach-ball.png" alt="배구공">
+        <img src="./img/004-tennis.png" alt="테니스공">
+    </div>
+     <h1>장바구니 🛒</h1>  
+     
+     <div id="cart"></div>
+     <script>
+         //prod div 내부의 img 를 클릭하면 ,
+         //클릭한 이미지와 동일한 이미지의 img 엘리먼트들 다시 cart div 내에 추가
+        function addMe(ev){
+            let imgNode = document.createElement('img'); //<img> 생성
+            imgNode.src = ev.target.src;   //<img src="클릭한엘리먼트의 src">
+            imgNode.onclick = delMe;
+            cdiv.append( imgNode );
+        }
+        
+        //cart div 내부의 img 클릭하면 클릭한 이미지 삭제 
+        function delMe(ev){
+            //this.remove();
+            ev.target.remove();
+        }
+
+        let pdiv = document.querySelector('#prod');
+        let cdiv = document.querySelector('#cart');
+        //let imgList = pdiv.querySelectorAll('img');
+       // for(let i = 0; i < imgList.length; i++){
+            
+        //    imgList[i].onclick = addMe; }
+
+
+            pdiv.onclick=function(ev)  {
+                if(ev.target.tagName === 'IMG' ){
+
+                    let imgNode = document.createElement('img'); //<img> 생성
+                    imgNode.src = ev.target.src;   //<img src="클릭한엘리먼트의 src">
+                    cdiv.append( imgNode );
+                }
+        };    
+        
+        cdiv.onclick = function(ev) {
+            if(ev.target.tagName === 'IMG'){
+            ev.target.remove();
+            }
+        };
+        
+     </script>
+</body>
+</html>

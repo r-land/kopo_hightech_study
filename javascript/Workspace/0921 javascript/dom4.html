@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM에 대하여</title>
+    <style>
+        #main {
+            border: 1px solid black
+        }
+
+        p{
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="mydiv">
+        <!-- 주석 -->
+        <div>서론</div>
+        <div id="main">
+            <p>본론1</p>
+            <p>본론2</p>
+        </div>
+        <div>결론</div>
+    </div>
+    
+    <script>
+        let md = document.querySelector('#main');
+        console.log(md.nodeName, md.nodeType); //노트이름 타입 
+        console.log(md.childNodes, md.children); //자식노드들 엘리먼트들 
+        console.log(md.firstchild, md.firstElementChild); //첫번쨰 자식노드들 엘리먼트들 
+        console.log(md.lastChild, md.lastElementChild); //마지막자식노드들 엘리먼트들 
+        console.log(md.parentNode, md.parentElement); //부모노드 엘리먼트들 
+        console.log(md.previousSibling, md.previousElementSibling); //직전형제 노드들 엘리먼트들 
+        console.log(md.nextSibling, md.nextElementSibling); //직후형제 노드 엘리먼트들 
+
+        //새로운 엘리먼트 생성
+        let linkStr = '<a href="core.html">이동</a>';
+        let linkNode = document.createElement('a');   //<a></a> 생성
+        //linkNode.setAttribute('href','core.html');  //속성이름,속성값  <a href="core.html"> 추가
+        //linkNode.append(document.createTextNode('이동'))   // let linkStr = '<a href="core.html">이동</a>' 완성
+
+        linkNode.href= 'core.html';
+        linkNode.innerHTML= '이동';
+
+        //md 내용의 마지막에 linkStr 추가
+        //md.innerHTML = md.innerHTML + linkStr;
+        //  md.insertAdjacentHTML('beforeend' , linkStr); //종료태그직정에 HTML문자열 삽입
+        //  md.insertAdjacentText('beforeend' , linkStr); //종료태그직정에 일반문자열 삽입
+        //  md.insertAdjacentElement('beforeend' , linkNode); //종료태그직정에 엘리먼트 삽입 문자열패싱해서 만든것 성능상 더좋음 
+        //  md.append(linkNode); //내용의 마지막에 엘리먼트 객체를 추가
+        // md.append(linkStr); //내용의 마지막에 일반문자열 추가  
+        
+        
+        //md 내용의 맨앞에 linkStr 추가
+        //md.innerHTML = linkStr + md.innerHTML;
+        //  md.insertAdjacentHTML('afterbegin' , linkStr); //시작태그직전에 HTML문자열 삽입
+        //  md.insertAdjacentText('afterbegin' , linkStr); //시작태그직전에 일반문자열 삽입
+        //  md.insertAdjacentElement('afterbegin' , linkNode); //시작태그직전에 엘리먼트 삽입 문자열패싱해서 만든것 성능상 더좋음 
+        //  md.prepend(linkNode); //내용의 맨처음에 엘리먼트 객체를 추가
+        //  md.prepend(linkStr); //내용의 맨처음에 일반문자열 추가  
+        
+        //md 직전에 linkStr 추가
+        
+        //  md.insertAdjacentHTML('beforebegin' , linkStr); //시작태그직전에 HTML문자열 삽입
+        //  md.insertAdjacentText('beforebegin' , linkStr); //시작태그직전에 일반문자열 삽입
+        //  md.insertAdjacentElement('beforebegin' , linkNode); //시작태그직전에 엘리먼트 삽입 문자열패싱해서 만든것 성능상 더좋음 
+        //  md.before(linkNode); //직전 엘리먼트 객체를 추가
+        //  md.before(linkStr); // 직전 일반문자열 추가  
+        
+        //md 직후에 linkStr 추가
+    
+          md.insertAdjacentHTML('afterend' , linkStr); //종료태그직후 에 HTML문자열 삽입
+        //  md.insertAdjacentText('afterend' , linkStr); //종료태그직후 일반문자열 삽입
+        //  md.insertAdjacentElement('afterend' , linkNode); //종료태그직후 엘리먼트 삽입 문자열패싱해서 만든것 성능상 더좋음 
+        //  md.after(linkNode); //직후  엘리먼트 객체를 추가
+        //  md.after(linkStr); //직후  일반문자열 추가  
+        
+        //md 삭제
+        //md.remove();
+        //md.parentNode.removeChild(md);
+
+        //md 복제
+        let copy = md.cloneNode(true); //true:자손까지 복사
+        document.querySelector('#mydiv').append(copy);
+    </script>
+</body>
+</html>

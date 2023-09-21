@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom 이란 무엇인가</title>
+    <style>
+        .box{
+            border:1px solid rgb(231, 102, 51);
+            padding: 10px;
+        }
+    </style>
+
+    <script>
+        //문서로드가 완료된 후 실행할 함수 설정
+        //window.onload = 함수; //문서에 포함된 외부리소스들까지 모두 로드된 후 실행
+        //document.addEventListener('DOMContentLoaded', 함수); //외부리소스 로드와 상관없이 dom 구조만 완성하면 실행
+        document.addEventListener('DOMContentLoaded', function(){
+            //구글로 이동 링크를 클릭하면 이동할지 여부를 물어보고 동의하면 이동
+               document.querySelector('#mylink').onclick = function(ev) {
+               let ok = confirm('지금가면 나랑정말 끝 ');
+               if(!ok){
+                    //return false; //현재 이벤트에 대한 브라우저 기본동작 취소 
+                    ev.preventDefault(); //현재 이벤트에 대한 브라우저 기본동작 취소
+                }
+               
+            };
+            //검색 버튼을 클릭하면 검색어를 입력했는지 여부를 확인하여 
+            //입력한 경우에만 검색 실행 
+            document.querySelector('#myform').onsubmit = function(ev) {
+                let v = document.querySelector('[name="q"]').value;
+                if (v.trim().length<1){ //(v.trim()==='')
+                    //return false; //현재 이벤트에 대한 브라우저 기본동작 취소 
+                    ev.preventDefault(); //현재 이벤트에 대한 브라우저 기본동작 취소
+                }
+            };
+            
+        });
+        
+    </script>
+
+</head>
+<body>
+    <button type="button" id="btn1" onclick="btnClick(event)" style="background-color: pink;">버튼1</button>
+    <button type="button" id="btn2" style="background-color: yellowgreen;" >버튼2</button>
+    <button type="button" id="btn3" style="background-color: skyblue;">버튼3</button>
+    <button type="button" id="btn4" style="background-color: violet;">버튼4</button>
+
+    <div id="outbox" class="box">
+        <div id="inbox" class="box">
+            <button type="button" id="mybtn" style="background-color: orange;">버튼</button>
+        </div>
+    </div>
+    
+
+
+
+    <script>
+        //버튼클릭!이라고 출력 (alert)하는 함수 btnClick 를 정의하고
+        //버튼1 클릭했을떄 btnClick함수를 실행하도록 설정 
+        //document.querySelector('#btn1').onclick = function(event){
+        //    this
+        //    btnClick();
+        //}
+        function btnClick(ev){
+            //이벤트리스터 함수 내에서 이벤트가 발생한 엘리먼트
+            //this 또는 인자로 받은 이벤트 객체의 target 
+            //this 는 1번버튼은 작동안함 이벤트 객체로 따로 만들어서 해야함
+            //alert(this.innerHTML + '클릭!');
+            alert(ev.target.innerHTML + '클릭!');
+        }
+
+        //이벤트리스터 == 이벤트 핸들러 == 이벤트콜백함수  설정 ~~
+        //1.시작태그의 on이벤트명 속성값으로 이벤트발생시 실행할 자바스크립트코드 버블링
+        //2.엘리멘트객체의 on이벤트명 속성값으로 이벤트발생시 실행할 함수를 저장 버블링
+        document.querySelector('#btn2').onclick = btnClick;
+        //3.엘리멘트객체의 on이벤트명 속성값으로 이벤트발생시 실행할 함수를 저장
+        //리스터 설정 취소해도 null 로 삭제 안됨 remove 메소드 사용해서 삭제 
+        document.querySelector('#btn3').addEventListener('click',btnClick);
+
+        document.querySelector('#btn4').onclick =function(){
+            //이벤트 리스너 설정 취소
+            //document.querySelector('#btn1').onclick = null;
+            //document.querySelector('#btn2').onclick = null;
+            //document.querySelector('#btn3').removeEventListener('click', btnClick);
+        };
+        document.querySelector('#outbox').addEventListener('click',e=>console.log('outbox클릭c'),true); //이벤트캡처링단계에서 실행
+        document.querySelector('#inbox').addEventListener('click',e=>console.log('inbox클릭c'),true); //이벤트캡처링간계에서 실행
+        document.querySelector('#mybtn').addEventListener('click',function(e){
+            console.log('mybtn클릭');
+            e.stopPropagation(); //이벤트버블링 중지
+            e.stopImmediatePropagation(); //현재 요소에 설정된 다른 이벤트핸들러 실행 취소 + 이벤트 버블링 중단
+        });
+        document.querySelector('#outbox').addEventListener('click',e=>console.log('outbox클릭b'),false); //이벤트버블링단계에서 실행
+        document.querySelector('#inbox').addEventListener('click',e=>console.log('inbox클릭b'),false); //이벤트버블링단계에서 실행
+        //최상위 document 에서 타겟까지 이벤트가 전달되는 과정 capturing 반대로 조상부모로 가는것 bubbling 
+        //캡처링버블링 어느단계에서 실행을 원하는지 마지막인자로 줄수있음 
+        //기본은 버블링 캡처링에서 실행하고 싶으면 true 
+    </script>
+    <a id="mylink" href="http://google.com"  target="_blank"> 구글 검색창</a>
+    <form id="myform" action="https://www.google.com/search"  target="_blank">
+        <input type="text" name="q" oninput="search()" >
+        <input type="submit" value="검색">
+    </form>
+
+
+</body>
+</html>

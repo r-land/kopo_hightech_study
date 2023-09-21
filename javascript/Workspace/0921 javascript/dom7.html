@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todos</title>
+    <style>
+        li.done{
+            text-decoration: line-through;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>할일목록🤖</h1>
+    <input type="text" id="todo">
+    <button type="button" id="add" style="background-color: pink;">➕</button>
+    <ul id="todoList"></ul>
+
+    <button type="button" id="del" style="background-color: skyblue;">➖</button>
+    <script>
+        let todoInp = document.querySelector('#todo');
+        let addBtn = document.querySelector('#add');
+        let todoUl = document.querySelector('#todoList');
+        let delBtn = document.querySelector('#del');
+        
+        //1. todo input에 할일을 입력하고 추가버튼을 클릭하면,
+        //   입력한 할일을 ul 내부에 li 엘리먼트로 만들어서 추가    
+        addBtn.onclick = function(e){
+            // todoUl.innerHTML += '<li>' +todoInp.value+ '</li>';
+            let newLi = document.createElement('li');
+            newLi.textContent = todoInp.value; 
+            todoUl.append(newLi);
+            todoInp.value = '';
+            
+        };
+        
+        // 2. ul 내부에 li 엘리먼트를 클릭할 떄마다 취소선을 그었다가 지웠다가 
+        todoUl.onclick = function(ev){
+            if(ev.target.tagName === 'LI') {
+                // if(ev.target.classList.contains('done')) {
+                    //     ev.target.classList.remove('done');
+                    // }else{
+                        //     ev.target.classList.add('done');
+                        // }
+                        ev.target.classList.toggle('done');
+                    }
+                    
+                };
+                
+        // 3. 삭제버튼을 클릭하면 ,취소선이 그어진 li 엘리먼트들을 삭제 
+            delBtn.onclick = function(){
+                let doneList = todoUl.querySelectorAll('li.done');
+                for(let i = 0; i < doneList.length; i++) {
+                    doneList[i].remove();
+                }
+            };
+
+
+    </script>
+
+</body>
+</html>

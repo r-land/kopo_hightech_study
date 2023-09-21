@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Study</title>
+    <style>
+        a{
+            text-decoration-line :none
+        }
+    </style>
+</head>
+<body>
+    <a href="core.html">링크테스트1</a>
+    <a href="dom1.html">링크테스트2</a>
+    <a href="dom2.html">링크테스트3</a>
+    <br>
+    <img src="img/001-basketball.png" alt="" width="80px" >
+    <img src="img/002-football.png" alt="" width="80px">
+    <img src="img/003-beach-ball.png" alt="" width="80px">
+    <form action="/member/add.do" name="myform">
+        아이디 : <input type="text" name="memId" value="a001"><br>
+        취미 : 
+        <select name="hobby" id="">
+            <option value="book">책</option>
+            <option value="music" selected>음악</option>
+            <option value="movie">영화</option>
+        </select><br><br>
+        <textarea name="memo" cols="30" rows="10">메모내용</textarea>
+    </form>
+   
+    <script>
+        console.log(document.documentElement); //==document.querySelector('html')
+        console.log(document.head);
+        console.log(document.body);
+        console.log(document.doctype);
+        console.log(document.title);
+        //img, form, a/area 엘리먼트들은
+        //document의 images, forms, links 속성에 유사배열로 저장되어 있다.
+        // 문서에서 등장하는 순서를 나타내는 인덱스 번호 또는 id/name 속성값으로 
+        //개별 엘리먼트 객체를 참조할 수 있다.
+
+        //문서에 2번째로 나오는 a 엘리먼트의 링크를 구글로 이동하는 링크로 변경
+        let linkch = document.links;
+
+        //let linkch = document.querySelectorAll('a')[1];
+        linkch[1].href= "https://www.google.com";
+        linkch[1].innerHTML= "구글 이동";
+
+        //문서에 2번째로 나오는 img 엘리먼트의 이미지를 변경
+        document.querySelectorAll('img')[1].src= "img/004-tennis.png" ;
+
+        //form 엘리먼트의 action 속성값을 콘솔에 출력
+        console.log(document.querySelectorAll('form')[0].action);
+        console.log(document.forms[0].action);
+        console.log(document.forms['myform'].action);
+        console.log(document.forms.myform.action);
+
+        //아이디 입력값 을 b002 로 변경
+        document.forms.myform.elements[0].value= 'b002';
+        document.forms.myform.elements.memId.value= 'b002';
+        document.forms.myform.memId.value= 'b002';
+        document.querySelector('[name="memId"]').value= "b002";
+
+        //취미의 선택값을 콘솔에 출력(music,음악)
+       let s = document.querySelector('[name="hobby"]');
+       console.log(s.value, s.options[s.selectedIndex].innerHTML);
+       let o = s.querySelector('option[value="'+s.value+'"]');
+       console.log(s.value, o.value, o.textContent, o.innerHTML);
+        
+        //취미 선택값을 영화로 변경
+        s.value = 'movie';
+
+        //textarea의 입력값을 '새로운 메모'로 변경
+        document.querySelector('textarea').innerHTML= "새로운메모" ;
+        document.querySelector('[name="memo"]').value= "새로운메모" ;
+
+    </script>
+</body>
+</html>
